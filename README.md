@@ -57,7 +57,7 @@ This is the backend of the IroCO2 application. Developed using Java 21 and Sprin
 - `domain/` : Domain model and business rules
 - `infrastructure/` : Infrastructure layer (external services, adapters)
 - `docker/` : Dockerfile, local development and CI tools (compose, scripts)
-- `docs/` : Architecture docs, ADRs, diagrams
+- `docs/` : Backend documentation
 - `tf/` : Terraform infrastructure as code
 
 ---
@@ -149,7 +149,9 @@ Distributed under the Apache 2.0 License. See [LICENSE](./LICENSE) for more info
 ---
 
 ## 📄 Documentation
-See [docs/](./docs) for architecture and technical decisions (e.g. [architecture_hexagonale.md](./docs/architecture_hexagonale.md), ADRs).
+See [docs/](./docs) for technical documentation.
+
+For ADRs and workflow documentation, see the [principal repository](https://github.com/ippontech/iroco2/blob/main/contribute/adr/ and https://github.com/ippontech/iroco2/tree/main/contribute/workflows).
 
 ## 🤝 Contributing
 See [CONTRIBUTING.md](./CONTRIBUTING.md)
