@@ -15,7 +15,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-package fr.ippon.iroco2.legacy.common.infrastructure.primary;
+package fr.ippon.iroco2.infrastructure.presentation;
 
 import fr.ippon.iroco2.domain.calculateur.model.emu.AWSDataCenter;
 import org.springframework.core.convert.converter.Converter;
