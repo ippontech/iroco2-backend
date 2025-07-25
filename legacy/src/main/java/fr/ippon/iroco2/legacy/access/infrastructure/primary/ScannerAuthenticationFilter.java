@@ -20,6 +20,7 @@ package fr.ippon.iroco2.legacy.access.infrastructure.primary;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import fr.ippon.iroco2.access.jwt.ScannerJwtVerifier;
+import fr.ippon.iroco2.access.presentation.IrocoAuthenticationException;
 import fr.ippon.iroco2.common.presentation.security.CustomPrincipal;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
@@ -43,8 +44,8 @@ public class ScannerAuthenticationFilter extends OncePerRequestFilter {
     private final HandlerExceptionResolver handlerExceptionResolver;
 
     public ScannerAuthenticationFilter(
-        ScannerJwtVerifier scannerJwtVerifier,
-        @Qualifier("handlerExceptionResolver") HandlerExceptionResolver handlerExceptionResolver
+            ScannerJwtVerifier scannerJwtVerifier,
+            @Qualifier("handlerExceptionResolver") HandlerExceptionResolver handlerExceptionResolver
     ) {
         this.scannerJwtVerifier = scannerJwtVerifier;
         this.handlerExceptionResolver = handlerExceptionResolver;
@@ -57,7 +58,7 @@ public class ScannerAuthenticationFilter extends OncePerRequestFilter {
         try {
             if (!isValidHeader(authHeader)) {
                 throw new IrocoAuthenticationException(
-                    "[SECURITY] - Invalid authorization header [value = %s]".formatted(authHeader)
+                        "[SECURITY] - Invalid authorization header [value = %s]".formatted(authHeader)
                 );
             }
 
@@ -82,8 +83,8 @@ public class ScannerAuthenticationFilter extends OncePerRequestFilter {
     private void setupAuthentication(String token) {
         DecodedJWT decodedJWT = JWT.decode(token);
         CustomPrincipal principal = new CustomPrincipal(
-            decodedJWT.getClaim("aws_account_id").asString(),
-            decodedJWT.getSubject()
+                decodedJWT.getClaim("aws_account_id").asString(),
+                decodedJWT.getSubject()
         );
 
         UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(principal, null, null);

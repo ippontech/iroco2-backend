@@ -21,7 +21,7 @@ import fr.ippon.iroco2.domain.commons.exception.FunctionalException;
 import fr.ippon.iroco2.domain.commons.exception.NotFoundException;
 import fr.ippon.iroco2.common.presentation.error.ErrorApi;
 import fr.ippon.iroco2.common.presentation.error.GlobalExceptionHandler;
-import fr.ippon.iroco2.legacy.access.infrastructure.primary.IrocoAuthenticationException;
+import fr.ippon.iroco2.access.presentation.IrocoAuthenticationException;
 import jakarta.validation.ValidationException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

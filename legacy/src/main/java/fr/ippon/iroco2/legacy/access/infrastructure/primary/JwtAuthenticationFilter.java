@@ -18,6 +18,7 @@
 package fr.ippon.iroco2.legacy.access.infrastructure.primary;
 
 import com.auth0.jwt.interfaces.DecodedJWT;
+import fr.ippon.iroco2.access.presentation.IrocoAuthenticationException;
 import fr.ippon.iroco2.common.presentation.security.CustomPrincipal;
 import fr.ippon.iroco2.access.presentation.SecurityRole;
 import jakarta.servlet.FilterChain;

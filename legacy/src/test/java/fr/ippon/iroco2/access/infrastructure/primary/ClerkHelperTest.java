@@ -22,7 +22,7 @@ import fr.ippon.iroco2.access.infrastructure.primary.utils.TestSecurityUtils;
 import fr.ippon.iroco2.config.TestContainersPostgresqlConfig;
 import fr.ippon.iroco2.access.presentation.SecurityRole;
 import fr.ippon.iroco2.legacy.access.infrastructure.primary.ClerkHelper;
-import fr.ippon.iroco2.legacy.access.infrastructure.primary.IrocoAuthenticationException;
+import fr.ippon.iroco2.access.presentation.IrocoAuthenticationException;
 
 import java.security.spec.InvalidKeySpecException;
 import java.time.Instant;
