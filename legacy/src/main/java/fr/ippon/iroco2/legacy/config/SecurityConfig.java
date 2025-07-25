@@ -17,8 +17,8 @@
  */
 package fr.ippon.iroco2.legacy.config;
 
-import fr.ippon.iroco2.legacy.access.infrastructure.primary.JwtAuthenticationFilter;
-import fr.ippon.iroco2.legacy.access.infrastructure.primary.ScannerAuthenticationFilter;
+import fr.ippon.iroco2.access.presentation.JwtAuthenticationFilter;
+import fr.ippon.iroco2.access.presentation.ScannerAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -40,8 +40,8 @@ public class SecurityConfig {
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     public SecurityConfig(
-        ScannerAuthenticationFilter scannerAuthenticationFilter,
-        JwtAuthenticationFilter jwtAuthenticationFilter
+            ScannerAuthenticationFilter scannerAuthenticationFilter,
+            JwtAuthenticationFilter jwtAuthenticationFilter
     ) {
         this.scannerAuthenticationFilter = scannerAuthenticationFilter;
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
@@ -50,25 +50,25 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(AbstractHttpConfigurer::disable)
-            .addFilterBefore(scannerAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-            .authorizeHttpRequests(
-                authorize ->
-                    authorize
-                        .requestMatchers("/api/public/**", "/actuator/health", "/actuator/info")
-                        .permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/scanner")
-                        .authenticated()
-                        .requestMatchers("/api/**")
-                        .hasAnyRole("ADMIN", "MEMBER")
-                        .requestMatchers("/actuator/**")
-                        .hasRole("ADMIN")
-                        .anyRequest()
-                        .authenticated()
-            )
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .exceptionHandling(Customizer.withDefaults());
+                .csrf(AbstractHttpConfigurer::disable)
+                .addFilterBefore(scannerAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .authorizeHttpRequests(
+                        authorize ->
+                                authorize
+                                        .requestMatchers("/api/public/**", "/actuator/health", "/actuator/info")
+                                        .permitAll()
+                                        .requestMatchers(HttpMethod.POST, "/api/scanner")
+                                        .authenticated()
+                                        .requestMatchers("/api/**")
+                                        .hasAnyRole("ADMIN", "MEMBER")
+                                        .requestMatchers("/actuator/**")
+                                        .hasRole("ADMIN")
+                                        .anyRequest()
+                                        .authenticated()
+                )
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .exceptionHandling(Customizer.withDefaults());
 
         return http.build();
     }

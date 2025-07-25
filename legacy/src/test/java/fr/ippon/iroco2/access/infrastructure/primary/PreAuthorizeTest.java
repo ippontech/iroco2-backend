@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import fr.ippon.iroco2.access.infrastructure.primary.utils.TestSecurityUtils;
 import fr.ippon.iroco2.config.TestContainersPostgresqlConfig;
 import fr.ippon.iroco2.access.presentation.SecurityRole;
-import fr.ippon.iroco2.legacy.access.infrastructure.primary.JwtAuthenticationFilter;
+import fr.ippon.iroco2.access.presentation.JwtAuthenticationFilter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

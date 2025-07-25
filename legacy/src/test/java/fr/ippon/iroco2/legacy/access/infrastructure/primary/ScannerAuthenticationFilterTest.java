@@ -26,6 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import fr.ippon.iroco2.access.infrastructure.primary.utils.TestSecurityUtils;
 import fr.ippon.iroco2.access.jwt.ScannerJwtVerifier;
+import fr.ippon.iroco2.access.presentation.ScannerAuthenticationFilter;
 import fr.ippon.iroco2.common.presentation.security.CustomPrincipal;
 import fr.ippon.iroco2.config.TestContainersPostgresqlConfig;
 import org.junit.jupiter.api.BeforeEach;
@@ -63,12 +64,12 @@ class ScannerAuthenticationFilterTest extends TestContainersPostgresqlConfig {
     @BeforeEach
     void beforeEach() {
         ScannerAuthenticationFilter scannerAuthenticationFilter = new ScannerAuthenticationFilter(
-            scannerJwtVerifier,
-            handlerExceptionResolver
+                scannerJwtVerifier,
+                handlerExceptionResolver
         );
         mockMvc = MockMvcBuilders.webAppContextSetup(context)
-            .apply(SecurityMockMvcConfigurers.springSecurity(scannerAuthenticationFilter))
-            .build();
+                .apply(SecurityMockMvcConfigurers.springSecurity(scannerAuthenticationFilter))
+                .build();
     }
 
     @Test
@@ -83,18 +84,18 @@ class ScannerAuthenticationFilterTest extends TestContainersPostgresqlConfig {
         String token = testSecurityUtils.buildScannerToken();
         when(scannerJwtVerifier.verify(token)).thenReturn(true);
         mockMvc
-            .perform(
-                post(PRIVATE_URL)
-                    .header("Authorization", "Bearer " + token)
-            )
-            .andExpect(status().isCreated());
+                .perform(
+                        post(PRIVATE_URL)
+                                .header("Authorization", "Bearer " + token)
+                )
+                .andExpect(status().isCreated());
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         assertThat(authentication).isNotNull();
         assertThat(authentication.getPrincipal()).isInstanceOf(CustomPrincipal.class);
         assertThat(((CustomPrincipal) authentication.getPrincipal()))
-            .usingRecursiveComparison()
-            .isEqualTo(new CustomPrincipal("123456789012", "subject-test"));
+                .usingRecursiveComparison()
+                .isEqualTo(new CustomPrincipal("123456789012", "subject-test"));
     }
 
     @Test
@@ -102,13 +103,13 @@ class ScannerAuthenticationFilterTest extends TestContainersPostgresqlConfig {
         var result = mockMvc.perform(post(PRIVATE_URL));
 
         result
-            .andExpect(status().is(HttpStatus.UNAUTHORIZED.value()))
-            .andExpect(jsonPath("$.message").value("[SECURITY] - Invalid authorization header [value = null]"));
+                .andExpect(status().is(HttpStatus.UNAUTHORIZED.value()))
+                .andExpect(jsonPath("$.message").value("[SECURITY] - Invalid authorization header [value = null]"));
     }
 
     @Test
     void token_who_does_not_start_with_bearer_should_return_401_and_must_not_create_user_security_context()
-        throws Exception {
+            throws Exception {
         String token = "BAD TOKEN";
         mockMvc.perform(post(PRIVATE_URL).header("Authorization", token)).andExpect(status().isUnauthorized());
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

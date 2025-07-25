@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import fr.ippon.iroco2.access.infrastructure.primary.utils.TestSecurityUtils;
 import fr.ippon.iroco2.common.presentation.security.CustomPrincipal;
 import fr.ippon.iroco2.config.TestContainersPostgresqlConfig;
-import fr.ippon.iroco2.legacy.access.infrastructure.primary.JwtAuthenticationFilter;
+import fr.ippon.iroco2.access.presentation.JwtAuthenticationFilter;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -56,8 +56,8 @@ class JwtAuthenticationFilterTest extends TestContainersPostgresqlConfig {
     @BeforeEach
     void beforeEach() {
         mockMvc = MockMvcBuilders.webAppContextSetup(context)
-            .apply(SecurityMockMvcConfigurers.springSecurity(jwtAuthenticationFilter))
-            .build();
+                .apply(SecurityMockMvcConfigurers.springSecurity(jwtAuthenticationFilter))
+                .build();
     }
 
     @Test
@@ -83,8 +83,8 @@ class JwtAuthenticationFilterTest extends TestContainersPostgresqlConfig {
     void bad_role_api_should_return_401_and_must_not_create_user_security_context() throws Exception {
         String token = testSecurityUtils.buildJWTWithRole("BAD_ROLE");
         mockMvc
-            .perform(get(PRIVATE_URL).header("Authorization", "Bearer " + token))
-            .andExpect(status().isUnauthorized());
+                .perform(get(PRIVATE_URL).header("Authorization", "Bearer " + token))
+                .andExpect(status().isUnauthorized());
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Assertions.assertThat(authentication).isNull();
     }
@@ -94,13 +94,13 @@ class JwtAuthenticationFilterTest extends TestContainersPostgresqlConfig {
         var result = mockMvc.perform(get(PRIVATE_URL));
 
         result
-            .andExpect(status().is(HttpStatus.UNAUTHORIZED.value()))
-            .andExpect(jsonPath("$.message").value("[SECURITY] - Authorization header is blank [value = 'null']"));
+                .andExpect(status().is(HttpStatus.UNAUTHORIZED.value()))
+                .andExpect(jsonPath("$.message").value("[SECURITY] - Authorization header is blank [value = 'null']"));
     }
 
     @Test
     void token_who_does_not_start_with_bearer_should_return_401_and_must_not_create_user_security_context()
-        throws Exception {
+            throws Exception {
         String token = "BAD TOKEN";
         mockMvc.perform(get(PRIVATE_URL).header("Authorization", token)).andExpect(status().isUnauthorized());
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
