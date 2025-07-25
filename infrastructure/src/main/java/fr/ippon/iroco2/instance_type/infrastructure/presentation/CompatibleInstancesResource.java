@@ -15,10 +15,10 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-package fr.ippon.iroco2.legacy.instance_type.infrastructure.presentation;
+package fr.ippon.iroco2.instance_type.infrastructure.presentation;
 
 import fr.ippon.iroco2.common.presentation.security.IsMember;
-import fr.ippon.iroco2.legacy.instance_type.domain.EC2InstanceTypeService;
+import fr.ippon.iroco2.instance_type.domain.EC2InstanceTypeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

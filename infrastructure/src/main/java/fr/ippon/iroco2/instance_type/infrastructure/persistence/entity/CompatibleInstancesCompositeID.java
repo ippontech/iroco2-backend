@@ -15,11 +15,13 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-package fr.ippon.iroco2.legacy.instance_type.infrastructure.persistence.entity;
+package fr.ippon.iroco2.instance_type.infrastructure.persistence.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+
 import java.io.Serializable;
+
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode

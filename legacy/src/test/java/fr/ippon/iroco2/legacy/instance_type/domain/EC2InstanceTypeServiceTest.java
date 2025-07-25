@@ -19,8 +19,9 @@ package fr.ippon.iroco2.legacy.instance_type.domain;
 
 import fr.ippon.iroco2.estimateur.persistence.repository.EC2InstanceRepository;
 import fr.ippon.iroco2.estimateur.persistence.repository.entity.EC2InstanceEntity;
-import fr.ippon.iroco2.legacy.instance_type.domain.model.EC2InstanceType;
-import fr.ippon.iroco2.legacy.instance_type.infrastructure.persistence.ServiceInstanceRepository;
+import fr.ippon.iroco2.instance_type.domain.EC2InstanceTypeService;
+import fr.ippon.iroco2.instance_type.domain.model.EC2InstanceType;
+import fr.ippon.iroco2.instance_type.infrastructure.persistence.ServiceInstanceRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

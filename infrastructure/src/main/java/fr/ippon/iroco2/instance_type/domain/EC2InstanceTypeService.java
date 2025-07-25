@@ -15,14 +15,14 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-package fr.ippon.iroco2.legacy.instance_type.domain;
+package fr.ippon.iroco2.instance_type.domain;
 
 import fr.ippon.iroco2.domain.estimateur.model.cpu.GPUType;
 import fr.ippon.iroco2.estimateur.persistence.repository.EC2InstanceRepository;
 import fr.ippon.iroco2.estimateur.persistence.repository.entity.EC2InstanceEntity;
-import fr.ippon.iroco2.legacy.instance_type.domain.model.EC2InstanceType;
-import fr.ippon.iroco2.legacy.instance_type.infrastructure.persistence.entity.ServiceInstanceModel;
-import fr.ippon.iroco2.legacy.instance_type.infrastructure.persistence.ServiceInstanceRepository;
+import fr.ippon.iroco2.instance_type.domain.model.EC2InstanceType;
+import fr.ippon.iroco2.instance_type.infrastructure.persistence.entity.ServiceInstanceModel;
+import fr.ippon.iroco2.instance_type.infrastructure.persistence.ServiceInstanceRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
