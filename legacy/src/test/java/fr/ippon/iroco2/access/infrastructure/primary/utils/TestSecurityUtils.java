@@ -22,7 +22,8 @@ import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import fr.ippon.iroco2.legacy.access.domain.SecurityRole;
+import fr.ippon.iroco2.access.presentation.SecurityRole;
+
 import java.security.KeyFactory;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
@@ -32,6 +33,7 @@ import java.time.Instant;
 import java.util.Base64;
 import java.util.Date;
 import java.util.UUID;
+
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -56,14 +58,14 @@ public class TestSecurityUtils {
         }
 
         String token = JWT.create()
-            .withIssuer("issuer-test")
-            .withAudience("audience-test")
-            .withClaim("email", "max@guinguin.fr")
-            .withClaim("role", SecurityRole.MEMBER.name())
-            .withIssuedAt(new Date())
-            .withExpiresAt(new Date(System.currentTimeMillis() + 500000L))
-            .withJWTId(UUID.randomUUID().toString())
-            .sign(algorithm);
+                .withIssuer("issuer-test")
+                .withAudience("audience-test")
+                .withClaim("email", "max@guinguin.fr")
+                .withClaim("role", SecurityRole.MEMBER.name())
+                .withIssuedAt(new Date())
+                .withExpiresAt(new Date(System.currentTimeMillis() + 500000L))
+                .withJWTId(UUID.randomUUID().toString())
+                .sign(algorithm);
 
         JWTVerifier verifier = JWT.require(algorithm).build();
         return verifier.verify(token);
@@ -111,13 +113,13 @@ public class TestSecurityUtils {
 
     public JWTCreator.Builder getJWTCreatorBuilder() {
         return JWT.create()
-            .withIssuer("issuer-test")
-            .withAudience("audience-test")
-            .withClaim("email", "max@guinguin.fr")
-            .withClaim("role", "MEMBER")
-            .withIssuedAt(new Date())
-            .withExpiresAt(new Date(System.currentTimeMillis() + 500000L))
-            .withJWTId(UUID.randomUUID().toString());
+                .withIssuer("issuer-test")
+                .withAudience("audience-test")
+                .withClaim("email", "max@guinguin.fr")
+                .withClaim("role", "MEMBER")
+                .withIssuedAt(new Date())
+                .withExpiresAt(new Date(System.currentTimeMillis() + 500000L))
+                .withJWTId(UUID.randomUUID().toString());
     }
 
     @SneakyThrows
@@ -138,12 +140,12 @@ public class TestSecurityUtils {
 
     public String buildScannerToken() {
         return JWT.create()
-            .withIssuer("issuer-test")
-            .withAudience("audience-test")
-            .withSubject("subject-test")
-            .withIssuedAt(Instant.now())
-            .withExpiresAt(Instant.now().plusSeconds(60))
-            .withClaim("aws_account_id", "123456789012")
-            .sign(defaultAlgorithm());
+                .withIssuer("issuer-test")
+                .withAudience("audience-test")
+                .withSubject("subject-test")
+                .withIssuedAt(Instant.now())
+                .withExpiresAt(Instant.now().plusSeconds(60))
+                .withClaim("aws_account_id", "123456789012")
+                .sign(defaultAlgorithm());
     }
 }

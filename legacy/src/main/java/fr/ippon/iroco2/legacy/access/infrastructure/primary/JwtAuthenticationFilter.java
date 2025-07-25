@@ -19,12 +19,14 @@ package fr.ippon.iroco2.legacy.access.infrastructure.primary;
 
 import com.auth0.jwt.interfaces.DecodedJWT;
 import fr.ippon.iroco2.common.presentation.security.CustomPrincipal;
-import fr.ippon.iroco2.legacy.access.domain.SecurityRole;
+import fr.ippon.iroco2.access.presentation.SecurityRole;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import java.util.Arrays;
 import java.util.List;
+
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -46,8 +48,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final HandlerExceptionResolver handlerExceptionResolver;
 
     public JwtAuthenticationFilter(
-        ClerkHelper clerkHelper,
-        @Qualifier("handlerExceptionResolver") HandlerExceptionResolver handlerExceptionResolver
+            ClerkHelper clerkHelper,
+            @Qualifier("handlerExceptionResolver") HandlerExceptionResolver handlerExceptionResolver
     ) {
         this.clerkHelper = clerkHelper;
         this.handlerExceptionResolver = handlerExceptionResolver;
@@ -60,14 +62,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         try {
             if (StringUtils.isBlank(requestHeader)) {
                 throw new IrocoAuthenticationException(
-                    "[SECURITY] - Authorization header is blank [value = '%s']".formatted(requestHeader)
+                        "[SECURITY] - Authorization header is blank [value = '%s']".formatted(requestHeader)
                 );
             }
 
             if (!requestHeader.startsWith("Bearer ")) {
                 throw new IrocoAuthenticationException(
-                    "[SECURITY] - Authorization header doesn't start with 'Bearer ' [value = '%s']".formatted(
-                            requestHeader
+                        "[SECURITY] - Authorization header doesn't start with 'Bearer ' [value = '%s']".formatted(
+                                requestHeader
                         )
                 );
             }
@@ -89,10 +91,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
         return new OrRequestMatcher(
-            new AntPathRequestMatcher("/api/public/**"),
-            new AntPathRequestMatcher("/actuator/health"),
-            new AntPathRequestMatcher("/actuator/info"),
-            new AntPathRequestMatcher("/api/scanner", "POST")
+                new AntPathRequestMatcher("/api/public/**"),
+                new AntPathRequestMatcher("/actuator/health"),
+                new AntPathRequestMatcher("/actuator/info"),
+                new AntPathRequestMatcher("/api/scanner", "POST")
         ).matches(request);
     }
 
@@ -102,25 +104,25 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String roleInJWT = decodedJWT.getClaim("role").asString().toUpperCase();
 
         SecurityRole role = Arrays.stream(SecurityRole.values())
-            .filter(r -> r.name().equals(roleInJWT))
-            .findFirst()
-            .orElseThrow(
-                () ->
-                    new IrocoAuthenticationException(
-                        "[SECURITY] - Role '%s' invalid. Valid roles: %s".formatted(
-                                roleInJWT,
-                                Arrays.toString(SecurityRole.values())
-                            )
-                    )
-            );
+                .filter(r -> r.name().equals(roleInJWT))
+                .findFirst()
+                .orElseThrow(
+                        () ->
+                                new IrocoAuthenticationException(
+                                        "[SECURITY] - Role '%s' invalid. Valid roles: %s".formatted(
+                                                roleInJWT,
+                                                Arrays.toString(SecurityRole.values())
+                                        )
+                                )
+                );
 
         List<SimpleGrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(role.getAuthority()));
 
         CustomPrincipal principal = new CustomPrincipal(userId, email);
         UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
-            principal,
-            null,
-            authorities
+                principal,
+                null,
+                authorities
         );
         SecurityContextHolder.getContext().setAuthentication(auth);
     }

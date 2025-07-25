@@ -20,13 +20,15 @@ package fr.ippon.iroco2.access.infrastructure.primary;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import fr.ippon.iroco2.access.infrastructure.primary.utils.TestSecurityUtils;
 import fr.ippon.iroco2.config.TestContainersPostgresqlConfig;
-import fr.ippon.iroco2.legacy.access.domain.SecurityRole;
+import fr.ippon.iroco2.access.presentation.SecurityRole;
 import fr.ippon.iroco2.legacy.access.infrastructure.primary.ClerkHelper;
 import fr.ippon.iroco2.legacy.access.infrastructure.primary.IrocoAuthenticationException;
+
 import java.security.spec.InvalidKeySpecException;
 import java.time.Instant;
 import java.util.Base64;
 import java.util.stream.Stream;
+
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -58,14 +60,14 @@ class ClerkHelperTest extends TestContainersPostgresqlConfig {
     @Test
     void not_base64_public_key_should_throw_illegalArgumentException() {
         Assertions.assertThatCode(() -> clerkHelper.getClerkPublicKey("bad public key ééééééé")).isInstanceOf(
-            IllegalArgumentException.class
+                IllegalArgumentException.class
         );
     }
 
     @Test
     void bad_base64_public_key_should_throw_invalidKeySpecException() {
         Assertions.assertThatCode(
-            () -> clerkHelper.getClerkPublicKey(Base64.getEncoder().encodeToString("bad key".getBytes()))
+                () -> clerkHelper.getClerkPublicKey(Base64.getEncoder().encodeToString("bad key".getBytes()))
         ).isInstanceOf(InvalidKeySpecException.class);
     }
 
@@ -79,7 +81,7 @@ class ClerkHelperTest extends TestContainersPostgresqlConfig {
     void none_value_in_alg_claim_header_should_not_throw_exception() {
         DecodedJWT decodedJWT = testSecurityUtils.getDecodedJWT(true);
         Assertions.assertThatCode(() -> clerkHelper.checkHeader(decodedJWT)).isInstanceOf(
-            IrocoAuthenticationException.class
+                IrocoAuthenticationException.class
         );
     }
 
@@ -92,7 +94,7 @@ class ClerkHelperTest extends TestContainersPostgresqlConfig {
     void bad_audience_claim_should_throw_custom_security_exception(String audience) {
         String token = testSecurityUtils.buildJWTWithAudience(audience);
         Assertions.assertThatCode(() -> clerkHelper.getVerifiedDecodedJWT(token)).isInstanceOf(
-            IrocoAuthenticationException.class
+                IrocoAuthenticationException.class
         );
     }
 
@@ -100,7 +102,7 @@ class ClerkHelperTest extends TestContainersPostgresqlConfig {
     void null_audience_claim_should_throw_custom_security_exception() {
         String token = testSecurityUtils.buildJWTWithAudience(null);
         Assertions.assertThatCode(() -> clerkHelper.getVerifiedDecodedJWT(token)).isInstanceOf(
-            IrocoAuthenticationException.class
+                IrocoAuthenticationException.class
         );
     }
 
@@ -119,7 +121,7 @@ class ClerkHelperTest extends TestContainersPostgresqlConfig {
     void bad_issuer_claim_should_throw_custom_security_exception(String issuer) {
         String token = testSecurityUtils.buildJWTWithIssuer(issuer);
         Assertions.assertThatCode(() -> clerkHelper.getVerifiedDecodedJWT(token)).isInstanceOf(
-            IrocoAuthenticationException.class
+                IrocoAuthenticationException.class
         );
     }
 
@@ -127,7 +129,7 @@ class ClerkHelperTest extends TestContainersPostgresqlConfig {
     void null_issuer_claim_should_throw_custom_security_exception() {
         String token = testSecurityUtils.buildJWTWithIssuer(null);
         Assertions.assertThatCode(() -> clerkHelper.getVerifiedDecodedJWT(token)).isInstanceOf(
-            IrocoAuthenticationException.class
+                IrocoAuthenticationException.class
         );
     }
 

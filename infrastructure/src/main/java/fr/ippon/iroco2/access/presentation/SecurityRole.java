@@ -15,7 +15,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-package fr.ippon.iroco2.legacy.access.domain;
+package fr.ippon.iroco2.access.presentation;
 
 import lombok.Getter;
 

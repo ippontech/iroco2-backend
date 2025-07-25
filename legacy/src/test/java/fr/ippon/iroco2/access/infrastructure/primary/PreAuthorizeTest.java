@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import fr.ippon.iroco2.access.infrastructure.primary.utils.TestSecurityUtils;
 import fr.ippon.iroco2.config.TestContainersPostgresqlConfig;
-import fr.ippon.iroco2.legacy.access.domain.SecurityRole;
+import fr.ippon.iroco2.access.presentation.SecurityRole;
 import fr.ippon.iroco2.legacy.access.infrastructure.primary.JwtAuthenticationFilter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -48,39 +48,39 @@ class PreAuthorizeTest extends TestContainersPostgresqlConfig {
     @BeforeEach
     void beforeEach() {
         mockMvc = MockMvcBuilders.webAppContextSetup(context)
-            .apply(SecurityMockMvcConfigurers.springSecurity(jwtAuthenticationFilter))
-            .build();
+                .apply(SecurityMockMvcConfigurers.springSecurity(jwtAuthenticationFilter))
+                .build();
     }
 
     @Test
     void admin_pre_authorize_should_return_200_when_user_has_admin_role() throws Exception {
         String token = testSecurityUtils.buildJWTWithRole(SecurityRole.ADMIN.name());
         mockMvc
-            .perform(get("/api/fakes/admin-api").header("Authorization", "Bearer " + token))
-            .andExpect(status().isOk());
+                .perform(get("/api/fakes/admin-api").header("Authorization", "Bearer " + token))
+                .andExpect(status().isOk());
     }
 
     @Test
     void admin_member_pre_authorize_should_return_200_when_user_has_admin_role() throws Exception {
         String token = testSecurityUtils.buildJWTWithRole(SecurityRole.ADMIN.name());
         mockMvc
-            .perform(get("/api/fakes/member-api").header("Authorization", "Bearer " + token))
-            .andExpect(status().isOk());
+                .perform(get("/api/fakes/member-api").header("Authorization", "Bearer " + token))
+                .andExpect(status().isOk());
     }
 
     @Test
     void member_pre_authorize_should_return_200_when_user_has_member_role() throws Exception {
         String token = testSecurityUtils.buildJWTWithRole(SecurityRole.MEMBER.name());
         mockMvc
-            .perform(get("/api/fakes/member-api").header("Authorization", "Bearer " + token))
-            .andExpect(status().isOk());
+                .perform(get("/api/fakes/member-api").header("Authorization", "Bearer " + token))
+                .andExpect(status().isOk());
     }
 
     @Test
     void admin_pre_authorize_should_return_403_when_user_has_member_role() throws Exception {
         String token = testSecurityUtils.buildJWTWithRole(SecurityRole.MEMBER.name());
         mockMvc
-            .perform(get("/api/fakes/admin-api").header("Authorization", "Bearer " + token))
-            .andExpect(status().isForbidden());
+                .perform(get("/api/fakes/admin-api").header("Authorization", "Bearer " + token))
+                .andExpect(status().isForbidden());
     }
 }
