@@ -15,7 +15,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-package fr.ippon.iroco2.legacy.config;
+package fr.ippon.iroco2.config;
 
 import fr.ippon.iroco2.infrastructure.presentation.StringToAWSDataCenterConverter;
 import org.springframework.beans.factory.annotation.Value;
