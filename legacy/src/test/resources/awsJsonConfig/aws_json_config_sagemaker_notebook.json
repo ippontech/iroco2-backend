@@ -1,0 +1,21 @@
+{
+  "Services": [
+    {
+      "Service Name": "SageMaker Studio Notebooks",
+      "Region": "Middle East (Bahrain)",
+      "Status": "",
+      "Service Cost": {
+        "monthly": "1094760.00",
+        "upfront": "0.00",
+        "12 months": "13137120.00"
+      },
+      "Properties": {
+        "Instance name": "ml.g4dn.xlarge",
+        "Number of data scientist(s)": "4",
+        "Number of Studio Notebook instances per data scientist": "150",
+        "Studio Notebook hour(s) per day": "24",
+        "Studio Notebook day(s) per month": "25"
+      }
+    }
+  ]
+}

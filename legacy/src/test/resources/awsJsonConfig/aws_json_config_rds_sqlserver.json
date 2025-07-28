@@ -1,0 +1,25 @@
+{
+  "Services": [
+    {
+      "Service Name": "Amazon RDS for SQL server",
+      "Region": "South America (Sao Paulo)",
+      "Status": "",
+      "Service Cost": {
+        "monthly": "74328.40",
+        "upfront": "0.00",
+        "12 months": "891940.80"
+      },
+      "Properties": {
+        "Storage for each RDS instance": "General Purpose SSD (gp2)",
+        "Storage amount": "100 GB",
+        "Number of nodes": "2",
+        "Instance type": "db.m4.10xlarge",
+        "Utilization (On-Demand only)": "100 %Utilized/Month",
+        "Deployment option": "Multi-AZ",
+        "License": "License included",
+        "Database edition": "Enterprise",
+        "Pricing strategy": "OnDemand"
+      }
+    }
+  ]
+}

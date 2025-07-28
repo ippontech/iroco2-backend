@@ -1,0 +1,21 @@
+{
+		"Services": [
+			{
+				"Service Name": "Amazon Redshift",
+				"Region": "US East (Ohio)",
+				"Status": "",
+				"Service Cost": {
+					"monthly": "9542.20",
+					"upfront": "0.00",
+					"12 months": "114506.40"
+				},
+				"Properties": {
+					"Nodes": "1",
+					"Instance type": "ra3.16xlarge",
+					"Utilization (On-Demand only)": "24 Hours/Day",
+					"Pricing strategy": "OnDemand",
+					"Additional backup storage": "1000 GB"
+				}
+			}
+		]
+}

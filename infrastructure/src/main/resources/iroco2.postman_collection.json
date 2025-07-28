@@ -1,0 +1,1009 @@
+{
+	"info": {
+		"_postman_id": "a47b6c7f-3886-4d8c-a3be-55ff3778146d",
+		"name": "iroco2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13907210"
+	},
+	"item": [
+		{
+			"name": "Actuator",
+			"item": [
+				{
+					"name": "Health",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{IROCO_URL}}/actuator/health",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"actuator",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Info",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{IROCO_URL}}/actuator/info",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"actuator",
+								"info"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Infrastructure",
+			"item": [
+				{
+					"name": "New Infra",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLERK_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cloudServiceProvider\": \"f109f0b2-340e-437e-8d0d-9f465ad03c2f\",\n    \"defaultRegion\": \"18f0f080-fb37-45b8-9cd5-b2fb5bed1620\",\n    \"name\": \"Test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{IROCO_URL}}/api/v2/infrastructures",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"infrastructures"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Infra by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLERK_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{IROCO_URL}}/api/v2/infrastructures/f07cc049-c82e-4394-b8e0-21a7fd572945",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"infrastructures",
+								"f07cc049-c82e-4394-b8e0-21a7fd572945"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Infra",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLERK_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{IROCO_URL}}/api/v2/infrastructures",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"infrastructures"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Carbon footprint by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLERK_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{IROCO_URL}}/api/v2/infrastructures/a4491788-52f2-42fc-bfe0-622c76477f93/carbon-footprint",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"infrastructures",
+								"a4491788-52f2-42fc-bfe0-622c76477f93",
+								"carbon-footprint"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Estimate by region",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLERK_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{IROCO_URL}}/api/v2/infrastructures/f07cc049-c82e-4394-b8e0-21a7fd572945/byregion-carbon-footprint",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"infrastructures",
+								"f07cc049-c82e-4394-b8e0-21a7fd572945",
+								"byregion-carbon-footprint"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Infra by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLERK_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{IROCO_URL}}/api/v2/infrastructures/a4491788-52f2-42fc-bfe0-622c76477f93",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"infrastructures",
+								"a4491788-52f2-42fc-bfe0-622c76477f93"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Analyse CUR",
+			"item": [
+				{
+					"name": "Analyse by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLERK_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{IROCO_URL}}/api/analysis/3a954f3e-1268-4486-8dd6-5522d1895aec",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"api",
+								"analysis",
+								"3a954f3e-1268-4486-8dd6-5522d1895aec"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Analyse by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLERK_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{IROCO_URL}}/api/analysis/3a954f3e-1268-4486-8dd6-5522d1895aec",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"api",
+								"analysis",
+								"3a954f3e-1268-4486-8dd6-5522d1895aec"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Analyses",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLERK_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{IROCO_URL}}/api/analysis",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"api",
+								"analysis"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Presigned URL",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLERK_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{IROCO_URL}}/api/analysis/presigned-url",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"api",
+								"analysis",
+								"presigned-url"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Scanner",
+			"item": [
+				{
+					"name": "New Scan",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Récupérer la réponse en texte brut\r",
+									"let rawCorrelationId = pm.response.text();\r",
+									"\r",
+									"// Supprime les guillemets environnants, le cas échéant\r",
+									"let cleanCorrelationId = rawCorrelationId.replace(/^\"|\"$/g, '');\r",
+									"\r",
+									"// Stocker le correlation id dans une variable d'environnement\r",
+									"pm.environment.set(\"CORRELATION_ID\", cleanCorrelationId);\r",
+									"\r",
+									"// Afficher dans la console pour vérification\r",
+									"console.log(\"Correlation Id stocké:\", cleanCorrelationId);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{IROCO_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{IROCO_URL}}/api/scanner",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"api",
+								"scanner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Scan",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLERK_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{IROCO_URL}}/api/scanner/120a9cb4-bc1c-4fc1-bfb5-a50305a9d198",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"api",
+								"scanner",
+								"120a9cb4-bc1c-4fc1-bfb5-a50305a9d198"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Scans",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLERK_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{IROCO_URL}}/api/scanner",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"api",
+								"scanner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Scan by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLERK_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{IROCO_URL}}/api/scanner/:id",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"api",
+								"scanner",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Payload CUR Part",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{IROCO_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"storageInMo\": 80000000.4,\r\n\t\"awsDataCenter\": \"eu-west-3\",\r\n\t\"durationOfServiceOperation\": \"P8DT8000H\",\r\n\t\"serviceTypeCUR\": \"S3\",\r\n\t\"correlationId\": \"{{CORRELATION_ID}}\",\r\n\t\"numberOfMessageExpected\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{IROCO2_SCANNER_API_ID}}.execute-api.eu-west-3.amazonaws.com/{{IROCO2_SCANNER_API_STAGE}}/payload-cur-part",
+							"protocol": "https",
+							"host": [
+								"{{IROCO2_SCANNER_API_ID}}",
+								"execute-api",
+								"eu-west-3",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"{{IROCO2_SCANNER_API_STAGE}}",
+								"payload-cur-part"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Catalog",
+			"item": [
+				{
+					"name": "All Services",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLERK_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{IROCO_URL}}/api/public/v2/catalog/services",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"api",
+								"public",
+								"v2",
+								"catalog",
+								"services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Service by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLERK_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{IROCO_URL}}/api/public/v2/catalog/services/a7a944e8-7a55-419e-99d3-4518f7222c1f",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"api",
+								"public",
+								"v2",
+								"catalog",
+								"services",
+								"a7a944e8-7a55-419e-99d3-4518f7222c1f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Component",
+			"item": [
+				{
+					"name": "New Component",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{CLERK_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"configurationValues\": [\n        {\n            \"id\": \"ac175a69-f9b3-4485-b2cd-bb777ea29ba9\",\n            \"value\": \"921600\"\n        }\n    ],\n    \"name\": \"Mon composant Postman\",\n    \"infrastructureID\": \"f07cc049-c82e-4394-b8e0-21a7fd572945\",\n    \"regionID\": \"7deaea71-3fe3-47c8-a646-0ba2a6656103\",\n    \"serviceID\": \"e16af23a-dece-4135-9333-c3dfce5fc8dc\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{IROCO_URL}}/api/v2/components",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"components"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Component",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLERK_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"configurationValues\": [\n        {\n            \"id\": \"ac175a69-f9b3-4485-b2cd-bb777ea29ba9\",\n            \"value\": \"922624\"\n        }\n    ],\n    \"name\": \"Mon composant Postmane\",\n    \"infrastructureID\": \"f07cc049-c82e-4394-b8e0-21a7fd572945\",\n    \"regionID\": \"7deaea71-3fe3-47c8-a646-0ba2a6656103\",\n    \"serviceID\": \"e16af23a-dece-4135-9333-c3dfce5fc8dc\",\n    \"id\": \"b75aebb3-c4de-4cde-8388-cc3e80468e41\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{IROCO_URL}}/api/v2/components",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"components"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Component",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLERK_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{IROCO_URL}}/api/v2/components/b75aebb3-c4de-4cde-8388-cc3e80468e41",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"components",
+								"b75aebb3-c4de-4cde-8388-cc3e80468e41"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Components",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLERK_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{IROCO_URL}}/api/v2/components?infrastructureId=f07cc049-c82e-4394-b8e0-21a7fd572945",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"components"
+							],
+							"query": [
+								{
+									"key": "infrastructureId",
+									"value": "f07cc049-c82e-4394-b8e0-21a7fd572945"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Service Config Setting",
+			"item": [
+				{
+					"name": "Cloud Service Provider",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLERK_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{IROCO_URL}}/api/service-configuration-settings/f109f0b2-340e-437e-8d0d-9f465ad03c2f",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"api",
+								"service-configuration-settings",
+								"f109f0b2-340e-437e-8d0d-9f465ad03c2f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Jwt Token",
+			"item": [
+				{
+					"name": "Generate Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Récupérer la réponse en texte brut",
+									"let token = pm.response.text();",
+									"",
+									"// Stocker le token dans une variable d'environnement",
+									"pm.environment.set(\"IROCO_TOKEN\", token);",
+									"",
+									"// Afficher dans la console pour vérification",
+									"console.log(\"Token stocké:\", token);",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLERK_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"aws_account_id\": \"992382519845\",\n    \"expire_in_seconds\": \"999999\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{IROCO_URL}}/api/v1/token/generate",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"token",
+								"generate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify API KEY",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CLERK_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{IROCO_URL}}/api/v1/token/verify?apiKey={{IROCO_TOKEN}}",
+							"host": [
+								"{{IROCO_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"token",
+								"verify"
+							],
+							"query": [
+								{
+									"key": "apiKey",
+									"value": "{{IROCO_TOKEN}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Clerk Authentication",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Vérifier si la réponse contient un JWT valide",
+									"if (pm.response.code === 400) {",
+									"    const jsonResponse = pm.response.json();",
+									"    ",
+									"    // Vérifier si le JWT est présent dans la réponse",
+									"    if (jsonResponse.meta.client.sessions.length > 0 && jsonResponse.meta.client.sessions[0].last_active_token) {",
+									"        const jwt = jsonResponse.meta.client.sessions[0].last_active_token.jwt;",
+									"        ",
+									"        // Stocker le JWT dans une variable d'environnement",
+									"        pm.environment.set('CLERK_TOKEN', jwt);",
+									"        console.log(\"Token JWT stocké dans la variable CLERK_TOKEN\");",
+									"    } else {",
+									"        console.log(\"Token JWT non trouvé dans la réponse\");",
+									"    }",
+									"} else {",
+									"    console.log(\"Erreur lors de la récupération de la réponse : \" + pm.response.code);",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "identifier={{CLERK_USER}}\npassword={{CLERK_PWD}}\nstrategy=password",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://glad-stud-84.clerk.accounts.dev/v1/client/sign_ins?__clerk_db_jwt={{CLERK_DB_JWT}}",
+							"protocol": "https",
+							"host": [
+								"glad-stud-84",
+								"clerk",
+								"accounts",
+								"dev"
+							],
+							"path": [
+								"v1",
+								"client",
+								"sign_ins"
+							],
+							"query": [
+								{
+									"key": "__clerk_db_jwt",
+									"value": "{{CLERK_DB_JWT}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "IROCO_URL",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

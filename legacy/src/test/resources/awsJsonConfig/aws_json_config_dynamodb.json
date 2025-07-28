@@ -1,0 +1,21 @@
+{
+  "Services": [
+    {
+      "Service Name": "DynamoDB provisioned capacity",
+      "Region": "US East (Ohio)",
+      "Status": "",
+      "Service Cost": {
+        "monthly": "40.50",
+        "upfront": "0.00",
+        "12 months": "486.00"
+      },
+      "Properties": {
+        "Table class": "Standard",
+        "Average item size (all attributes)": "1 KB",
+        "Write reserved capacity term": "1 year",
+        "Read reserved capacity term": "1 year",
+        "Data storage size": "50 GB"
+      }
+    }
+  ]
+}

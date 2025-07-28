@@ -1,0 +1,24 @@
+{
+  "Services": [
+    {
+      "Service Name": "Amazon RDS for Db2",
+      "Region": "US East (Ohio)",
+      "Status": "",
+      "Service Cost": {
+        "monthly": "6241.72",
+        "upfront": "0.00",
+        "12 months": "74900.64"
+      },
+      "Properties": {
+        "Storage volume": "General Purpose SSD (gp3)",
+        "Storage amount": "20 GB",
+        "Nodes": "1",
+        "Instance Type": "db.m6i.12xlarge",
+        "Utilization (On-Demand only)": "100 %Utilized/Month",
+        "Deployment option": "Multi-AZ",
+        "Pricing Model": "OnDemand",
+        "Database edition": "Advanced"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+DELETE FROM link_user_aws_account luaw WHERE luaw.awsAccountId = 'awsID';

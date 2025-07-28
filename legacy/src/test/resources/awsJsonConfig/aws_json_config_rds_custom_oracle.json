@@ -1,0 +1,24 @@
+{
+  "Services": [
+    {
+      "Service Name": "Amazon RDS Custom for Oracle",
+      "Region": "South America (Sao Paulo)",
+      "Status": "",
+      "Service Cost": {
+        "monthly": "1746.16",
+        "upfront": "0.00",
+        "12 months": "20953.92"
+      },
+      "Properties": {
+        "Storage for each RDS Custom instance": "General Purpose SSD (gp2)",
+        "Storage amount": "100 GB",
+        "Instance type": "db.r5.xlarge",
+        "Number of RDS Custom for Oracle instances": "2",
+        "Utilization (On-Demand only)": "100 %Utilized/Month",
+        "License": "Customer-provided",
+        "Database edition": "Enterprise",
+        "Deployment option": "Single-AZ"
+      }
+    }
+  ]
+}

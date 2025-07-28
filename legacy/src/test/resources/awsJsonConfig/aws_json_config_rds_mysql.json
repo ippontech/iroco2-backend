@@ -1,0 +1,23 @@
+{
+  "Services": [
+    {
+      "Service Name": "Amazon RDS for MySQL",
+      "Region": "South America (Sao Paulo)",
+      "Status": "",
+      "Service Cost": {
+        "monthly": "951.88",
+        "upfront": "0.00",
+        "12 months": "11422.56"
+      },
+      "Properties": {
+        "Storage for each RDS instance": "General Purpose SSD (gp2)",
+        "Storage amount": "20 GB",
+        "Quantity": "2",
+        "Instance type": "db.m1.large",
+        "Utilization (On-Demand only)": "100 %Utilized/Month",
+        "Deployment option": "Multi-AZ",
+        "Pricing strategy": "OnDemand"
+      }
+    }
+  ]
+}

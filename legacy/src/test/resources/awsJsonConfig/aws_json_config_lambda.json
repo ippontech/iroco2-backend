@@ -1,0 +1,20 @@
+{
+  "Services": [
+    {
+      "Service Name": "AWS Lambda",
+      "Region": "US East (Ohio)",
+      "Status": "",
+      "Service Cost": {
+        "monthly": "0.00",
+        "upfront": "0.00",
+        "12 months": "0.00"
+      },
+      "Properties": {
+        "Architecture": "x86",
+        "Invoke Mode": "Buffered",
+        "Amount of ephemeral storage allocated": "512 MB",
+        "Number of requests": "1 per month"
+      }
+    }
+  ]
+}

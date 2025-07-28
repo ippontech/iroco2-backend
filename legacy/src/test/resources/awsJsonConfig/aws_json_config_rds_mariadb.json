@@ -1,0 +1,23 @@
+{
+  "Services": [
+    {
+      "Service Name": "Amazon RDS for MariaDB",
+      "Region": "South America (Sao Paulo)",
+      "Status": "",
+      "Service Cost": {
+        "monthly": "3121.42",
+        "upfront": "0.00",
+        "12 months": "37457.04"
+      },
+      "Properties": {
+        "Storage volume": "General Purpose SSD (gp2)",
+        "Storage amount": "30 GB",
+        "Quantity": "2",
+        "Instance type": "db.m3.2xlarge",
+        "Utilization (On-Demand only)": "100 %Utilized/Month",
+        "Deployment selection": "Multi-AZ",
+        "Pricing strategy": "OnDemand"
+      }
+    }
+  ]
+}

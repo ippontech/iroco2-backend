@@ -1,0 +1,18 @@
+{
+  "Services": [
+    {
+      "Service Name": "Amazon Elastic File System (EFS)",
+      "Region": "US East (Ohio)",
+      "Status": "",
+      "Service Cost": {
+        "monthly": "1.10",
+        "upfront": "0.00",
+        "12 months": "13.20"
+      },
+      "Properties": {
+        "Desired Storage Capacity": "10 GB per month",
+        "Infrequent Access requests": "30 GB per month"
+      }
+    }
+  ]
+}

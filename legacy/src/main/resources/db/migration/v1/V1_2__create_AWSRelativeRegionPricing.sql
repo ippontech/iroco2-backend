@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS AWSRELATIVIEREGIONPRICING(
+   Id SERIAL PRIMARY KEY,
+   AWSDataCenter VARCHAR(20) NOT NULL,
+   RelativePercentPricing NUMERIC (5,2) NOT NULL
+);
+
+INSERT INTO AWSRELATIVIEREGIONPRICING(AWSDataCenter,RelativePercentPricing) VALUES ('Europe (Stockholm)', 0);
+INSERT INTO AWSRELATIVIEREGIONPRICING(AWSDataCenter,RelativePercentPricing) VALUES ('Europe (Ireland)', 4.84);
+INSERT INTO AWSRELATIVIEREGIONPRICING(AWSDataCenter,RelativePercentPricing) VALUES ('Europe (Paris)', 9.05);
+INSERT INTO AWSRELATIVIEREGIONPRICING(AWSDataCenter,RelativePercentPricing) VALUES ('Europe (Milan)', 9.28);
+INSERT INTO AWSRELATIVIEREGIONPRICING(AWSDataCenter,RelativePercentPricing) VALUES ('Europe (London)', 9.51);
+INSERT INTO AWSRELATIVIEREGIONPRICING(AWSDataCenter,RelativePercentPricing) VALUES ('Europe (Frankfurt)', 12.90);
+INSERT INTO AWSRELATIVIEREGIONPRICING(AWSDataCenter,RelativePercentPricing) VALUES ('Europe (Zurich)', 22.89);

@@ -1,0 +1,23 @@
+{
+  "Services": [
+    {
+      "Service Name": "Amazon RDS for PostgreSQL",
+      "Region": "South America (Sao Paulo)",
+      "Status": "",
+      "Service Cost": {
+        "monthly": "989.82",
+        "upfront": "0.00",
+        "12 months": "11877.84"
+      },
+      "Properties": {
+        "Storage volume": "General Purpose SSD (gp2)",
+        "Storage amount": "30 GB",
+        "Nodes": "2",
+        "Instance Type": "db.m1.large",
+        "Utilization (On-Demand only)": "100 %Utilized/Month",
+        "Deployment Option": "Multi-AZ",
+        "Pricing Model": "OnDemand"
+      }
+    }
+  ]
+}

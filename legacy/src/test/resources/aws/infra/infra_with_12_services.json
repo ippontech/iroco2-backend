@@ -1,0 +1,266 @@
+{
+  "name":"Mon Infrastructure",
+  "cloudServiceProvider":"AWS",
+  "creationDate": "2024-07-29T06:38:14.533Z",
+  "awsRegion": "US East (N. Virginia)",
+  "serviceToExportList": [
+    {
+      "id": "840c8b46-60c2-42ce-a578-17375be71e10",
+      "name": "Mon EC2 nom",
+      "componentRegion": "US East (N. Virginia)",
+      "isDefaultRegion": true,
+      "serviceConfigItem": {
+        "power": 22.5,
+        "name": "EC2",
+        "modifyLink": "/ec2",
+        "defaulted": false,
+        "specializedConfiguration": {
+          "instanceNumber": 1,
+          "instanceType": "c4.2xlarge"
+        }
+      }
+    },
+    {
+      "id": "200350a6-244b-4794-8b0e-56f97f5d8477",
+      "componentRegion": "US East (N. Virginia)",
+      "isDefaultRegion": true,
+      "serviceConfigItem": {
+        "power": 0.705,
+        "name": "Fargate",
+        "modifyLink": "/fargate",
+        "specializedConfiguration": {
+          "cpuVcore": 0.25,
+          "ramCapacity": {
+            "value": 0.5,
+            "unit": "Go"
+          },
+          "selectedCpuArchitectureType": "x86",
+          "numberOfTasksPerMonth": 2592000,
+          "numberOfTasks": {
+            "occurencies": 1,
+            "period": "seconds"
+          },
+          "averageDuration": {
+            "duration": "PT1S",
+            "number": 1,
+            "unit": "seconds"
+          }
+        },
+        "defaulted": false
+      },
+      "name": "Mon fargate nom"
+    },
+    {
+      "id": "88ed76b1-85f8-4aab-bd94-f9c721403933",
+      "componentRegion": "US East (N. Virginia)",
+      "isDefaultRegion": true,
+      "serviceConfigItem": {
+        "power": 0.00456,
+        "name": "S3",
+        "modifyLink": "/s3",
+        "defaulted": false,
+        "specializedConfiguration": {
+          "storage": {
+            "value": 1,
+            "unit": "Go"
+          }
+        }
+      },
+      "name": "Mon S3 nom"
+    },
+    {
+      "id": "290a0434-392f-472d-afb8-17d207652ee3",
+      "componentRegion": "US East (N. Virginia)",
+      "isDefaultRegion": true,
+      "serviceConfigItem": {
+        "power": 3.09,
+        "name": "RDS",
+        "modifyLink": "/rds",
+        "defaulted": false,
+        "specializedConfiguration": {
+          "instanceNumber": 1,
+          "instanceType": "c6gd.12xlarge",
+          "storage": {
+            "value": 1,
+            "unit": "Go"
+          },
+          "dailyDuration": "PT1H"
+        }
+      },
+      "name": "Mon RDS nom"
+    },
+    {
+      "id": "0a91f5f5-14fc-475c-b708-0b21f2b117ef",
+      "componentRegion": "US East (N. Virginia)",
+      "isDefaultRegion": true,
+      "serviceConfigItem": {
+        "power": 0.00152,
+        "name": "EFS",
+        "modifyLink": "/efs",
+        "defaulted": false,
+        "specializedConfiguration": {
+          "storage": {
+            "value": 1,
+            "unit": "Go"
+          }
+        }
+      },
+      "name": "Mon Elastric nom"
+    },
+    {
+      "id": "4d8367ab-5b95-4c90-9982-b186b0632938",
+      "componentRegion": "US East (N. Virginia)",
+      "isDefaultRegion": true,
+      "serviceConfigItem": {
+        "power": 0.305,
+        "name": "Aurora",
+        "modifyLink": "/aurora",
+        "defaulted": false,
+        "specializedConfiguration": {
+          "cpuVcore": 2,
+          "instanceNumber": 1,
+          "ramCapacity": {
+            "value": 8,
+            "unit": "Go"
+          },
+          "selectedCpuType": "XEON",
+          "storage": {
+            "value": 1,
+            "unit": "Go"
+          },
+          "dailyDuration": "PT1H",
+          "instanceName": "db.m5.large: 2 vCPUs - 8 GiB - Intel Xeon Platinum 8175",
+          "serverless": false
+        }
+      },
+      "name": "Mon aurora nom"
+    },
+    {
+      "id": "4d980690-c2d7-4650-b4ce-5d136765cd49",
+      "componentRegion": "US East (N. Virginia)",
+      "isDefaultRegion": true,
+      "serviceConfigItem": {
+        "power": 0.00152,
+        "name": "Aurora Serverless",
+        "modifyLink": "/aurora",
+        "defaulted": false,
+        "specializedConfiguration": {
+          "selectedCpuType": "EPYC",
+          "storage": {
+            "value": 1,
+            "unit": "Go"
+          },
+          "serverless": true
+        }
+      },
+      "name": "MOn aurora serverless nom"
+    },
+    {
+      "id": "c034e943-99ca-4526-81a4-6f7165238b37",
+      "componentRegion": "US East (N. Virginia)",
+      "isDefaultRegion": true,
+      "serviceConfigItem": {
+        "power": 0,
+        "name": "DynamoDB",
+        "modifyLink": "/dynamodb",
+        "defaulted": false,
+        "specializedConfiguration": {
+          "storage": {
+            "value": 1,
+            "unit": "Go"
+          }
+        }
+      },
+      "name": "MOn dynama nom"
+    },
+    {
+      "id": "b18781b5-b548-4433-b7fd-355c903e3e18",
+      "componentRegion": "US East (N. Virginia)",
+      "isDefaultRegion": true,
+      "serviceConfigItem": {
+        "power": 6.68,
+        "name": "Redshift",
+        "modifyLink": "/redshift",
+        "specializedConfiguration": {
+          "cpuVcore": 32,
+          "instanceNumber": 1,
+          "ramCapacity": {
+            "value": 244,
+            "unit": "Go"
+          },
+          "selectedCpuType": "XEON",
+          "storage": {
+            "value": 1,
+            "unit": "Go"
+          },
+          "dailyDuration": "PT1H",
+          "instanceName": "dc2.8xlarge"
+        },
+        "defaulted": false
+      },
+      "name": "Mon redshift nom"
+    },
+    {
+      "id": "f2bed1de-4c9c-4c44-b9ce-55d767814087",
+      "componentRegion": "US East (N. Virginia)",
+      "isDefaultRegion": true,
+      "serviceConfigItem": {
+        "power": 0.000778,
+        "name": "Lambda",
+        "modifyLink": "/lambda",
+        "specializedConfiguration": {
+          "ramCapacity": {
+            "value": 128,
+            "unit": "Mo"
+          },
+          "selectedCpuArchitectureType": "x86",
+          "storage": {
+            "value": 512,
+            "unit": "Mo"
+          },
+          "numberOfExecutionsPerMonth": 1,
+          "averageDurationForOneExecutionInMilliSecond": 1
+        },
+        "defaulted": false
+      },
+      "name": "mon lambda nom"
+    },
+    {
+      "id": "0f563797-d785-4f83-a5eb-fa0e4be8640c",
+      "componentRegion": "US East (N. Virginia)",
+      "isDefaultRegion": true,
+      "serviceConfigItem": {
+        "power": 0.38,
+        "name": "SageMakerNotebook",
+        "modifyLink": "/sagemakernotebook",
+        "specializedConfiguration": {
+          "instanceNumber": 1,
+          "dailyDuration": "PT1H",
+          "daysPerMonth": 1,
+          "instanceType": "c5.12xlarge"
+        },
+        "defaulted": false
+      },
+      "name": "mon sagemaker nom"
+    },
+    {
+      "id": "d895295d-fcc5-4fa4-ae7b-bd405c1b3a7a",
+      "componentRegion": "US East (N. Virginia)",
+      "isDefaultRegion": true,
+      "serviceConfigItem": {
+        "power": 0.00152,
+        "name": "EBS",
+        "modifyLink": "/ebs",
+        "specializedConfiguration": {
+          "storage": {
+            "value": 1,
+            "unit": "Go"
+          },
+          "numberOfVolumes": 1
+        },
+        "defaulted": false
+      },
+      "name": "mon ebs nom"
+    }
+  ]
+}

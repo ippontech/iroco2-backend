@@ -1,0 +1,15 @@
+package fr.ippon.iroco2.domain.calculateur.model.emu;
+
+public enum SettingName {
+    INSTANCE_NUMBER,
+    INSTANCE_TYPE,
+    STORAGE_IN_MEGA_BYTE,
+    DAILY_RUNNING_TIME_IN_MS,
+    MONTHLY_INVOCATION_COUNT,
+    AVERAGE_EXEC_TIME_IN_MS,
+    PROCESSOR_ARCHITECTURE,
+    MEMORY_IN_MEGA_BYTE,
+    DAILY_USAGE_COUNT,
+    DAYS_ON_PER_MONTH,
+    VOLUME_NUMBER
+}
