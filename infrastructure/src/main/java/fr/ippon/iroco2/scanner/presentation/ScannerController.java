@@ -43,9 +43,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/scanner")
 @RequiredArgsConstructor
 public class ScannerController {
-
     private final ScannerSvc scannerSvc;
-    private final ScanMapper scanMapper;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -65,7 +63,7 @@ public class ScannerController {
     @GetMapping
     public ResponseEntity<List<ScanListElementResponse>> findAll() {
         var scans = scannerSvc.findAll();
-        var responses = scanMapper.toResponse(scans);
+        var responses = ScanMapper.toResponse(scans);
         return ResponseEntity.ok(responses);
     }
 
@@ -73,7 +71,7 @@ public class ScannerController {
     @GetMapping("/{id}")
     public ResponseEntity<ScanDetailResponse> findById(@PathVariable UUID id) throws ScanNotFoundException {
         var scan = scannerSvc.findById(id);
-        var response = scanMapper.toDetailResponse(scan);
+        var response = ScanMapper.toDetailResponse(scan);
         return ResponseEntity.ok(response);
     }
 }
