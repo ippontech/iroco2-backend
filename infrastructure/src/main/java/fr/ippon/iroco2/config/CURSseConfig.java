@@ -15,10 +15,11 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-package fr.ippon.iroco2.legacy.config;
+package fr.ippon.iroco2.config;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
