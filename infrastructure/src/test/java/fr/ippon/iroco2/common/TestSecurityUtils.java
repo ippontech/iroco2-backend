@@ -15,7 +15,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-package fr.ippon.iroco2.access.infrastructure.primary.utils;
+package fr.ippon.iroco2.common;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;

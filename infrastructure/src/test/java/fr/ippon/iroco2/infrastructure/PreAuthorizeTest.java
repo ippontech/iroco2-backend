@@ -15,15 +15,12 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-package fr.ippon.iroco2.access.infrastructure.primary;
+package fr.ippon.iroco2.infrastructure;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import fr.ippon.iroco2.access.infrastructure.primary.utils.TestSecurityUtils;
-import fr.ippon.iroco2.config.TestContainersPostgresqlConfig;
-import fr.ippon.iroco2.access.presentation.SecurityRole;
 import fr.ippon.iroco2.access.presentation.JwtAuthenticationFilter;
+import fr.ippon.iroco2.access.presentation.SecurityRole;
+import fr.ippon.iroco2.common.TestSecurityUtils;
+import fr.ippon.iroco2.config.TestContainersPostgresqlConfig;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +28,9 @@ import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfig
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 class PreAuthorizeTest extends TestContainersPostgresqlConfig {
 

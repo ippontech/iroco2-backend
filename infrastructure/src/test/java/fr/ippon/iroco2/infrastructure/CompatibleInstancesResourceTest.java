@@ -15,7 +15,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-package fr.ippon.iroco2.legacy.instance_type.infrastructure.presentation;
+package fr.ippon.iroco2.infrastructure;
 
 import com.c4_soft.springaddons.security.oauth2.test.annotations.WithMockAuthentication;
 import fr.ippon.iroco2.config.TestContainersPostgresqlConfig;

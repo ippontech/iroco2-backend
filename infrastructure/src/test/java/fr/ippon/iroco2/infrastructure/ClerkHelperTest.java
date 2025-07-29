@@ -15,10 +15,10 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-package fr.ippon.iroco2.access.infrastructure.primary;
+package fr.ippon.iroco2.infrastructure;
 
 import com.auth0.jwt.interfaces.DecodedJWT;
-import fr.ippon.iroco2.access.infrastructure.primary.utils.TestSecurityUtils;
+import fr.ippon.iroco2.common.TestSecurityUtils;
 import fr.ippon.iroco2.config.TestContainersPostgresqlConfig;
 import fr.ippon.iroco2.access.presentation.SecurityRole;
 import fr.ippon.iroco2.access.presentation.ClerkHelper;

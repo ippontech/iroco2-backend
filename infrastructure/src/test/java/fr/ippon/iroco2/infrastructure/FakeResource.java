@@ -15,7 +15,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-package fr.ippon.iroco2.access.infrastructure.primary.fake;
+package fr.ippon.iroco2.infrastructure;
 
 import fr.ippon.iroco2.common.presentation.security.IsAdmin;
 import fr.ippon.iroco2.common.presentation.security.IsMember;
@@ -29,9 +29,11 @@ public class FakeResource {
 
     @IsAdmin
     @GetMapping("/admin-api")
-    public void adminApi() {}
+    public void adminApi() {
+    }
 
     @IsMember
     @GetMapping("/member-api")
-    public void memberApi() {}
+    public void memberApi() {
+    }
 }
