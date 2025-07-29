@@ -41,7 +41,7 @@ public class EC2InstanceEntity {
     @Column(name = "Id")
     private int id;
 
-    @Column(name = "Name")
+    @Column(name = "Name", unique = true)
     private String name;
 
     @Column(name = "Memory")
