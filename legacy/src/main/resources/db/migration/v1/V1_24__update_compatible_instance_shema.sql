@@ -1,0 +1,28 @@
+ALTER TABLE COMPATIBLE_INSTANCES_FOR_SERVICE
+    ADD COLUMN instance_type_name text;
+
+
+UPDATE COMPATIBLE_INSTANCES_FOR_SERVICE
+SET instance_type_name = EC2instance.Name
+FROM EC2instance
+WHERE COMPATIBLE_INSTANCES_FOR_SERVICE.INSTANCE_TYPE_ID = EC2instance.Id;
+
+-- Drop the existing primary key constraint
+ALTER TABLE COMPATIBLE_INSTANCES_FOR_SERVICE
+    DROP CONSTRAINT COMPATIBLE_INSTANCES_FOR_SERVICE_pkey;
+
+-- Add the new primary key constraint
+ALTER TABLE COMPATIBLE_INSTANCES_FOR_SERVICE
+    ADD CONSTRAINT COMPATIBLE_INSTANCES_FOR_SERVICE_pkey PRIMARY KEY (SERVICE_SHORT_NAME, instance_type_name);
+
+-- Remove the foreign key constraint
+ALTER TABLE COMPATIBLE_INSTANCES_FOR_SERVICE
+    DROP CONSTRAINT compatible_instances_for_service_instance_type_id_fkey;
+
+-- Remove the INSTANCE_TYPE_ID column
+ALTER TABLE COMPATIBLE_INSTANCES_FOR_SERVICE
+    DROP COLUMN INSTANCE_TYPE_ID;
+
+-- Add the new foreign key constraint
+ALTER TABLE COMPATIBLE_INSTANCES_FOR_SERVICE
+    ADD CONSTRAINT fk_instance_name FOREIGN KEY (instance_type_name) REFERENCES EC2instance(Name);

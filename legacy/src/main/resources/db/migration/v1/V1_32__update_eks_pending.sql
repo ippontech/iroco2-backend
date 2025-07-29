@@ -1,0 +1,1 @@
+UPDATE services SET availability = 'PENDING' where services.name='Amazon Elastic Kubernetes Service (EKS)';

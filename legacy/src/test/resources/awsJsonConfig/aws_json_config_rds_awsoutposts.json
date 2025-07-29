@@ -1,0 +1,21 @@
+{
+  "Services": [
+    {
+      "Service Name": "Amazon RDS on AWS Outposts",
+      "Region": "South America (Sao Paulo)",
+      "Status": "",
+      "Service Cost": {
+        "monthly": "5466.24",
+        "upfront": "0.00",
+        "12 months": "65594.88"
+      },
+      "Properties": {
+        "Number of RDS for Outposts instances": "2",
+        "Instance type": "db.m5.12xlarge",
+        "Utilization (On-Demand only)": "100 %Utilized/Month",
+        "Database Engine": "MySQL (on-premise for Outpost)",
+        "Deployment option": "Multi-AZ"
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "Services": [
+    {
+      "Service Name": "Amazon Aurora PostgreSQL-Compatible DB",
+      "Region": "Europe (Frankfurt)",
+      "Status": "",
+      "Service Cost": {
+        "monthly": "51073.58",
+        "upfront": "0.00",
+        "12 months": "612882.96"
+      },
+      "Properties": {
+        "Aurora PostgreSQL Cluster Configuration Option": "Aurora Standard",
+        "Quantity": "200",
+        "Instance type": "db.r6g.large",
+        "Utilization": "100 %Utilized/Month",
+        "Pricing strategy": "OnDemand",
+        "Storage amount": "1000 GB"
+      }
+    }
+  ]
+}

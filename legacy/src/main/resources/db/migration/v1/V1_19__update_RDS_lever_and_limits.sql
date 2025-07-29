@@ -1,0 +1,3 @@
+UPDATE services SET lever = 'Pour les environnement de dev uniquement : Utilisation de SSM pour auto-shutdown/start les instances en dehors des horaires de travail\nMise en place de policy de suppression de backup' where services.name='Amazon Relational Database Service (RDS)';
+UPDATE services SET limitation = 'Impossible de configurer la réplication multi-azs pour les cluster RDS (une seule instance prise en compte)' where services.name='Amazon Relational Database Service (RDS)';
+UPDATE services SET availability = 'PENDING' where services.name='Amazon SageMaker';

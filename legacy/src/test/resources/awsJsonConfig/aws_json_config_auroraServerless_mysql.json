@@ -1,0 +1,18 @@
+{
+  "Services": [
+    {
+      "Service Name": "Amazon Aurora MySQL-Compatible",
+      "Region": "US East (Ohio)",
+      "Status": "",
+      "Service Cost": {
+        "monthly": "626.13",
+        "upfront": "0.00",
+        "12 months": "7513.56"
+      },
+      "Properties": {
+        "Aurora MySQL Cluster Configuration Options": "Aurora Standard",
+        "Storage amount": "1000 GB"
+      }
+    }
+  ]
+}

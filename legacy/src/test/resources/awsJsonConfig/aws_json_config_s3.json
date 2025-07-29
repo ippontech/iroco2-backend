@@ -1,0 +1,28 @@
+{
+  "Services": [
+    {
+      "Service Name": "S3 Standard",
+      "Region": "South America (Sao Paulo)",
+      "Status": "",
+      "Service Cost": {
+        "monthly": "40.50",
+        "upfront": "0.00",
+        "12 months": "486.00"
+      },
+      "Properties": {
+        "S3 Standard storage": "1000 GB per month"
+      }
+    },
+    {
+      "Service Name": "Data Transfer",
+      "Region": "South America (Sao Paulo)",
+      "Status": "",
+      "Service Cost": {
+        "monthly": "0.00",
+        "upfront": "0.00",
+        "12 months": "0.00"
+      },
+      "Properties": {}
+    }
+  ]
+}

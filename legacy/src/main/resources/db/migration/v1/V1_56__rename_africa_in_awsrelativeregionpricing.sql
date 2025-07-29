@@ -1,0 +1,1 @@
+UPDATE awsrelativieregionpricing SET AWSDataCenter = 'Africa (Cape Town)' WHERE AWSDataCenter = 'Africa (Cap Town)';

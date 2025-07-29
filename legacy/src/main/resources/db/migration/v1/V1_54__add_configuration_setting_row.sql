@@ -1,0 +1,63 @@
+-- configuration_setting
+INSERT INTO configuration_setting (id, name) VALUES
+('ac175a69-f9b3-4485-b2cd-bb777ea29ba9', 'STORAGE_IN_MEGA_BYTE'),
+('58e04e8b-1660-47b6-98f3-fe19c08c5914', 'DAILY_RUNNING_TIME_IN_MS'),
+('e53639a8-855a-438d-89e5-a7708cf79fc9', 'MONTHLY_INVOCATION_COUNT'),
+('befb1e73-ad28-4445-ab46-559ab7477ca2', 'AVERAGE_EXEC_TIME_IN_MS'),
+('d0a9268e-69dd-43b6-890c-86a2b3ff80b2', 'PROCESSOR_ARCHITECTURE'),
+('2a1e906a-dd6a-4395-92a1-8ff4b7c02a83', 'MEMORY_IN_MEGA_BYTE'),
+('7c699eec-e8b2-48e9-b963-523f4178716a', 'DAILY_USAGE_COUNT'),
+('3a68fba6-92da-4a4b-8447-027abcadb980', 'DAYS_ON_PER_MONTH');
+
+-- service_configuration_setting
+INSERT INTO service_configuration_setting (id, service_id, configuration_setting_id, default_value) VALUES
+
+-- S3 e16af23a-dece-4135-9333-c3dfce5fc8dc
+('f37589b4-5ff9-4de4-b2ba-3bef150def41','e16af23a-dece-4135-9333-c3dfce5fc8dc', 'ac175a69-f9b3-4485-b2cd-bb777ea29ba9', null), -- STORAGE_IN_MEGA_BYTE ac175a69-f9b3-4485-b2cd-bb777ea29ba9
+
+-- EFS f01997e6-2a86-456c-a67e-4671b7cccc8f
+('2353c04c-d742-40c9-b02a-883f0f749a04','f01997e6-2a86-456c-a67e-4671b7cccc8f', 'ac175a69-f9b3-4485-b2cd-bb777ea29ba9', null), -- STORAGE_IN_MEGA_BYTE ac175a69-f9b3-4485-b2cd-bb777ea29ba9
+
+--dynamodb 512a5e2c-1130-441b-88c9-b0fe8e3dccd8
+('4e7c6f1e-d5c2-486a-ac6b-2def0783df70','512a5e2c-1130-441b-88c9-b0fe8e3dccd8', 'ac175a69-f9b3-4485-b2cd-bb777ea29ba9', null), -- STORAGE_IN_MEGA_BYTE ac175a69-f9b3-4485-b2cd-bb777ea29ba9
+
+-- EBS 80a1bc13-51b9-4d76-bb41-22fd955f3d7c
+('9db462f0-d447-4d24-9fe4-82ae62aab0ee','80a1bc13-51b9-4d76-bb41-22fd955f3d7c', 'ac175a69-f9b3-4485-b2cd-bb777ea29ba9', null), -- STORAGE_IN_MEGA_BYTE ac175a69-f9b3-4485-b2cd-bb777ea29ba9
+
+-- RDS 64bfca71-c7f4-4e93-aadc-ebc522ce121f
+('74a28572-4289-4734-a9db-a0216cece420','64bfca71-c7f4-4e93-aadc-ebc522ce121f', 'ac175a69-f9b3-4485-b2cd-bb777ea29ba9', null), -- STORAGE_IN_MEGA_BYTE ac175a69-f9b3-4485-b2cd-bb777ea29ba9
+('f4e0ad9d-2cac-4e89-a024-f25e73e86cf9','64bfca71-c7f4-4e93-aadc-ebc522ce121f', '0d281333-7ad6-4920-bb74-3c9f75c9b16d', null), -- INSTANCE_NUMBER 0d281333-7ad6-4920-bb74-3c9f75c9b16d
+('c15cd7e6-35d2-4683-871d-362de429ac8e','64bfca71-c7f4-4e93-aadc-ebc522ce121f', '58e04e8b-1660-47b6-98f3-fe19c08c5914', null), -- DAILY_RUNNING_TIME_IN_MS 58e04e8b-1660-47b6-98f3-fe19c08c5914
+('27f821be-8dbb-4157-a891-89eeb6c2908f','64bfca71-c7f4-4e93-aadc-ebc522ce121f', '3580bd2a-b351-4964-9fc1-582e48be0c85', null), -- INSTANCE_TYPE 3580bd2a-b351-4964-9fc1-582e48be0c85
+
+-- Aurora a7a944e8-7a55-419e-99d3-4518f7222c1f
+('d7567998-65bd-4825-b688-a12197992ff6','a7a944e8-7a55-419e-99d3-4518f7222c1f', '0d281333-7ad6-4920-bb74-3c9f75c9b16d', null), -- INSTANCE_NUMBER 0d281333-7ad6-4920-bb74-3c9f75c9b16d
+('c2bbe772-dbc9-4ac4-809d-e09fd74acefd','a7a944e8-7a55-419e-99d3-4518f7222c1f', '58e04e8b-1660-47b6-98f3-fe19c08c5914', null), -- DAILY_RUNNING_TIME_IN_MS 58e04e8b-1660-47b6-98f3-fe19c08c5914
+('c39c3cdc-8465-4289-acee-59dafb0f9db5','a7a944e8-7a55-419e-99d3-4518f7222c1f', '3580bd2a-b351-4964-9fc1-582e48be0c85', null), -- INSTANCE_TYPE 3580bd2a-b351-4964-9fc1-582e48be0c85
+
+
+-- Redshift 7e1930c6-ca46-4713-bd02-c8228f1f8586
+('0a34d5af-4e15-43c6-883d-129b1860e20d','7e1930c6-ca46-4713-bd02-c8228f1f8586', '0d281333-7ad6-4920-bb74-3c9f75c9b16d', null), -- INSTANCE_NUMBER 0d281333-7ad6-4920-bb74-3c9f75c9b16d
+('112e88d3-514f-432e-b144-1615dcdbb893','7e1930c6-ca46-4713-bd02-c8228f1f8586', '58e04e8b-1660-47b6-98f3-fe19c08c5914', null), -- DAILY_RUNNING_TIME_IN_MS 58e04e8b-1660-47b6-98f3-fe19c08c5914
+('f56dfbef-95ec-4648-8dab-11f49bdabff1','7e1930c6-ca46-4713-bd02-c8228f1f8586', '3580bd2a-b351-4964-9fc1-582e48be0c85', null), -- INSTANCE_TYPE 3580bd2a-b351-4964-9fc1-582e48be0c85
+
+-- lambda cece60a9-8e50-4d00-b91e-7a93c0c1229f
+('7476cb1f-ff2a-496d-b2bc-fed40e2edff8', 'cece60a9-8e50-4d00-b91e-7a93c0c1229f', 'e53639a8-855a-438d-89e5-a7708cf79fc9', null), -- MONTHLY_INVOCATION_COUNT e53639a8-855a-438d-89e5-a7708cf79fc9
+('e2fe6cb0-6425-47d5-a98e-1aeb72b13e3b', 'cece60a9-8e50-4d00-b91e-7a93c0c1229f', 'befb1e73-ad28-4445-ab46-559ab7477ca2', null), -- AVERAGE_EXEC_TIME_IN_MS befb1e73-ad28-4445-ab46-559ab7477ca2
+('0d342581-61b9-497d-943f-a582dd130a8a', 'cece60a9-8e50-4d00-b91e-7a93c0c1229f', 'd0a9268e-69dd-43b6-890c-86a2b3ff80b2', null), -- PROCESSOR_ARCHITECTURE d0a9268e-69dd-43b6-890c-86a2b3ff80b2
+('bdac35f0-030b-4331-9def-acf65b0c8163', 'cece60a9-8e50-4d00-b91e-7a93c0c1229f', '2a1e906a-dd6a-4395-92a1-8ff4b7c02a83', null), -- MEMORY_IN_MEGA_BYTE 2a1e906a-dd6a-4395-92a1-8ff4b7c02a83
+('a3bfa272-ce77-4720-b55f-a50b656f610c', 'cece60a9-8e50-4d00-b91e-7a93c0c1229f', 'ac175a69-f9b3-4485-b2cd-bb777ea29ba9', null), -- STORAGE_IN_MEGA_BYTE ac175a69-f9b3-4485-b2cd-bb777ea29ba9
+
+-- SageMaker 2e9c3b1b-13fc-4984-8139-93af07ad74df
+('06bfd355-f80c-4c91-b44c-88f9ce397a2a','2e9c3b1b-13fc-4984-8139-93af07ad74df', '0d281333-7ad6-4920-bb74-3c9f75c9b16d', null), -- INSTANCE_NUMBER 0d281333-7ad6-4920-bb74-3c9f75c9b16d
+('93adcdf4-2d17-451c-8990-cf07871de3af','2e9c3b1b-13fc-4984-8139-93af07ad74df', '7c699eec-e8b2-48e9-b963-523f4178716a', null), -- DAILY_USAGE_COUNT 7c699eec-e8b2-48e9-b963-523f4178716a
+('ad00e2a5-9e8c-4aae-9a9e-c2900d5ae76b','2e9c3b1b-13fc-4984-8139-93af07ad74df', '3a68fba6-92da-4a4b-8447-027abcadb980', null), -- DAYS_ON_PER_MONTH 3a68fba6-92da-4a4b-8447-027abcadb980
+('4ab7cd34-16b4-4d77-b6cc-fb4fa4826986','2e9c3b1b-13fc-4984-8139-93af07ad74df', '58e04e8b-1660-47b6-98f3-fe19c08c5914', null), -- DAILY_RUNNING_TIME_IN_MS 58e04e8b-1660-47b6-98f3-fe19c08c5914
+('5e6eaca3-fbf1-4c7e-b936-2d806e47f964','2e9c3b1b-13fc-4984-8139-93af07ad74df', '3580bd2a-b351-4964-9fc1-582e48be0c85', null), -- INSTANCE_TYPE 3580bd2a-b351-4964-9fc1-582e48be0c85
+
+-- Fargate 5a7b23b0-d3d8-4ee5-a7e1-91100e6935f1
+('7a2e8482-db34-46b1-b821-27fb8ead3711','5a7b23b0-d3d8-4ee5-a7e1-91100e6935f1', 'e53639a8-855a-438d-89e5-a7708cf79fc9', null), -- MONTHLY_INVOCATION_COUNT e53639a8-855a-438d-89e5-a7708cf79fc9
+('014ecbef-7dde-4418-a4d2-a19e5c142e4c','5a7b23b0-d3d8-4ee5-a7e1-91100e6935f1', 'befb1e73-ad28-4445-ab46-559ab7477ca2', null), -- AVERAGE_EXEC_TIME_IN_MS befb1e73-ad28-4445-ab46-559ab7477ca2
+('804cf39e-9c39-4537-9fe6-72b5b9341b4f','5a7b23b0-d3d8-4ee5-a7e1-91100e6935f1', 'd0a9268e-69dd-43b6-890c-86a2b3ff80b2', null), -- PROCESSOR_ARCHITECTURE d0a9268e-69dd-43b6-890c-86a2b3ff80b2
+('74e1d451-286e-41e6-b864-0274b6c67457','5a7b23b0-d3d8-4ee5-a7e1-91100e6935f1', '2a1e906a-dd6a-4395-92a1-8ff4b7c02a83', null) -- MEMORY_IN_MEGA_BYTE 2a1e906a-dd6a-4395-92a1-8ff4b7c02a83
+;

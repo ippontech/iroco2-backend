@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS LICENSE_KEYS;
+
+
+
+
+
+
+

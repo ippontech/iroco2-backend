@@ -1,0 +1,25 @@
+{
+  "Services": [
+    {
+      "Service Name": "Amazon EC2 ",
+      "Region": "US East (Ohio)",
+      "Status": "",
+      "Service Cost": {
+        "monthly": "1.53",
+        "upfront": "0.00",
+        "12 months": "18.40"
+      },
+      "Properties": {
+        "Tenancy": "Shared Instances",
+        "Operating system": "Linux",
+        "Workload": "Consistent, Nombre d'instances: 1",
+        "Advance EC2 instance": "t4g.nano",
+        "Pricing strategy": "Compute Savings Plans 3yr No Upfront",
+        "Enable monitoring": "disabled",
+        "DT Inbound: Not selected": "0 TB per month",
+        "DT Outbound: Not selected": "0 TB per month",
+        "DT Intra-Region:": "0 TB per month"
+      }
+    }
+  ]
+}

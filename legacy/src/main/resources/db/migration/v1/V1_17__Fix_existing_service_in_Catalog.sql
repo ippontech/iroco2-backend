@@ -1,0 +1,2 @@
+UPDATE services SET availability = 'AVAILABLE' where services.name='Amazon Relational Database Service (RDS)';
+UPDATE services SET availability = 'UNAVAILABLE' where services.name='Amazon RDS on VMware';
