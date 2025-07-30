@@ -17,17 +17,38 @@
  */
 package fr.ippon.iroco2.arch;
 
+import com.tngtech.archunit.core.domain.properties.HasName;
 import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
 import com.tngtech.archunit.lang.ArchRule;
-import fr.ippon.iroco2.domain.commons.DomainService;
 
+import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
 
 @AnalyzeClasses(packages = "fr.ippon.iroco2")
 public class ArchiHexaInfraTest {
     @ArchTest
-    ArchRule infra_should_not_depend_on_classes_annoted_with_domain =
+    ArchRule infra_should_not_access_on_classes_annoted_with_domain =
             noClasses().that().resideOutsideOfPackage("fr.ippon.iroco2.domain..")
-                    .should().accessClassesThat().areAnnotatedWith(DomainService.class);
+                    .should().accessClassesThat()
+                    .areAnnotatedWith("fr.ippon.iroco2.domain.commons.DomainService");
+    @ArchTest
+    ArchRule infra_should_not_access_on_domain_or_svc_classes =
+            noClasses().that().resideOutsideOfPackage("fr.ippon.iroco2.domain..")
+                    .and().doNotHaveSimpleName("DomainConnector")
+                    .should().dependOnClassesThat()
+                    .resideInAnyPackage(
+                            "fr.ippon.iroco2.domain.*",
+                            "fr.ippon.iroco2.domain.*.svc"
+                    );
+    @ArchTest
+    ArchRule infra_adapter_should_implement_domain_spi_interfaces =
+            classes().that().haveNameMatching(".*Adapter")
+                    .and().doNotHaveSimpleName("EC2InstanceStorageAdapter") // TODO avoid exception
+                    .should().implement(HasName.AndFullName.Predicates.fullNameMatching("fr\\.ippon\\.iroco2\\.domain\\.[a-z]+\\.spi\\..*"));
+    @ArchTest
+    ArchRule infra_controller_should_call_domain_api_interfaces =
+            classes().that().haveNameMatching(".*Controller")
+                    .and().doNotHaveSimpleName("ScannerJwtController") // used to get token
+                    .should().accessClassesThat().haveNameMatching("fr\\.ippon\\.iroco2\\.domain\\.[a-z]+\\.api\\..*");
 }
