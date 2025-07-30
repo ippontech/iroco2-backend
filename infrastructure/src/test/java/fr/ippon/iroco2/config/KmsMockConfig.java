@@ -15,7 +15,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-package fr.ippon.iroco2;
+package fr.ippon.iroco2.config;
 
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.TestConfiguration;

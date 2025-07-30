@@ -18,18 +18,11 @@
 package fr.ippon.iroco2.infrastructure;
 
 import com.auth0.jwt.interfaces.DecodedJWT;
-import fr.ippon.iroco2.common.TestSecurityUtils;
-import fr.ippon.iroco2.config.TestContainersPostgresqlConfig;
-import fr.ippon.iroco2.access.presentation.SecurityRole;
+import fr.ippon.iroco2.config.TestAwsConfig;
 import fr.ippon.iroco2.access.presentation.ClerkHelper;
 import fr.ippon.iroco2.access.presentation.IrocoAuthenticationException;
-
-import java.security.spec.InvalidKeySpecException;
-import java.time.Instant;
-import java.util.Base64;
-import java.util.stream.Stream;
-
-import lombok.extern.slf4j.Slf4j;
+import fr.ippon.iroco2.access.presentation.SecurityRole;
+import fr.ippon.iroco2.common.TestSecurityUtils;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -37,20 +30,32 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 
-@AutoConfigureMockMvc(addFilters = false)
-@Slf4j
-class ClerkHelperTest extends TestContainersPostgresqlConfig {
+import java.security.spec.InvalidKeySpecException;
+import java.time.Instant;
+import java.util.Base64;
+import java.util.stream.Stream;
 
+@SpringBootTest
+@Import(TestAwsConfig.class)
+class ClerkHelperTest {
     @Autowired
     ClerkHelper clerkHelper;
+    @Autowired
+    TestSecurityUtils testSecurityUtils;
 
     @Value("${clerk.public.key}")
     private String clerkPublicKey;
 
-    @Autowired
-    TestSecurityUtils testSecurityUtils;
+    static Stream<Arguments> bad_audience_data() {
+        return Stream.of(Arguments.of("bad-audience"), Arguments.of(""), Arguments.of("   "));
+    }
+
+    static Stream<Arguments> bad_issuer_data() {
+        return Stream.of(Arguments.of("bad-issuer"), Arguments.of(""), Arguments.of("   "));
+    }
 
     @Test
     void valid_public_key_and_footer_should_not_throw_exception() {
@@ -85,10 +90,6 @@ class ClerkHelperTest extends TestContainersPostgresqlConfig {
         );
     }
 
-    static Stream<Arguments> bad_audience_data() {
-        return Stream.of(Arguments.of("bad-audience"), Arguments.of(""), Arguments.of("   "));
-    }
-
     @ParameterizedTest
     @MethodSource("bad_audience_data")
     void bad_audience_claim_should_throw_custom_security_exception(String audience) {
@@ -110,10 +111,6 @@ class ClerkHelperTest extends TestContainersPostgresqlConfig {
     void correct_audience_claim_should_not_throw_exception() {
         String token = testSecurityUtils.buildJWTWithAudience("audience-test");
         Assertions.assertThatCode(() -> clerkHelper.getVerifiedDecodedJWT(token)).doesNotThrowAnyException();
-    }
-
-    static Stream<Arguments> bad_issuer_data() {
-        return Stream.of(Arguments.of("bad-issuer"), Arguments.of(""), Arguments.of("   "));
     }
 
     @ParameterizedTest

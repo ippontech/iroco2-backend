@@ -1,7 +1,6 @@
 package fr.ippon.iroco2.common;
 
-import fr.ippon.iroco2.KmsMockConfig;
-import fr.ippon.iroco2.S3MockConfig;
+import fr.ippon.iroco2.config.TestAwsConfig;
 import io.awspring.cloud.sqs.operations.SqsTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,7 +16,7 @@ import static org.testcontainers.containers.localstack.LocalStackContainer.Servi
 
 @Testcontainers
 @SpringBootTest
-@Import({S3MockConfig.class, KmsMockConfig.class})
+@Import(TestAwsConfig.class)
 public abstract class TestLocalStackWithSQS {
     @Container
     private static final LocalStackContainer LOCALSTACK =
