@@ -15,7 +15,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-package fr.ippon.iroco2.legacy.instance_type.domain;
+package fr.ippon.iroco2.infrastructure;
 
 import fr.ippon.iroco2.estimateur.persistence.repository.EC2InstanceRepository;
 import fr.ippon.iroco2.estimateur.persistence.repository.entity.EC2InstanceEntity;

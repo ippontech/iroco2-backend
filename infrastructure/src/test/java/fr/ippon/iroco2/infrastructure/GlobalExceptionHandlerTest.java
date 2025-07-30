@@ -15,7 +15,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-package fr.ippon.iroco2.common.infrastructure.primary;
+package fr.ippon.iroco2.infrastructure;
 
 import fr.ippon.iroco2.domain.commons.exception.FunctionalException;
 import fr.ippon.iroco2.domain.commons.exception.NotFoundException;
