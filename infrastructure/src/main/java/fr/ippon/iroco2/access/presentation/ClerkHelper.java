@@ -22,17 +22,15 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.security.KeyFactory;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
-
-import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 /**
  * Références pour les bonnes pratiques de sécurité des JWT :
@@ -82,7 +80,7 @@ public class ClerkHelper {
 
     public void checkHeader(DecodedJWT decodedJWT) throws IrocoAuthenticationException {
         final String alg = decodedJWT.getHeaderClaim("alg").asString();
-        if (StringUtils.equalsAnyIgnoreCase("NONE", alg)) {
+        if ("NONE".equalsIgnoreCase(alg)) {
             throw new IrocoAuthenticationException("[SECURITY] - The alg claim header is equals to 'NONE'");
         }
     }
