@@ -26,5 +26,5 @@ import org.junit.platform.suite.api.Suite;
 @Suite
 @SelectClasspathResource("features")
 @ConfigurationParameter(key = Constants.GLUE_PROPERTY_NAME, value = "fr.ippon.iroco2")
-public class CucumberIntegrationConfig {
+public class CucumberIntegrationTest {
 }
