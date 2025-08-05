@@ -19,10 +19,12 @@ package fr.ippon.iroco2.config;
 
 import fr.ippon.iroco2.access.presentation.JwtAuthenticationFilter;
 import fr.ippon.iroco2.access.presentation.ScannerAuthenticationFilter;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -31,45 +33,41 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
+@Slf4j
 public class SecurityConfig {
-
-    private final ScannerAuthenticationFilter scannerAuthenticationFilter;
-    private final JwtAuthenticationFilter jwtAuthenticationFilter;
-
-    public SecurityConfig(
-            ScannerAuthenticationFilter scannerAuthenticationFilter,
-            JwtAuthenticationFilter jwtAuthenticationFilter
-    ) {
-        this.scannerAuthenticationFilter = scannerAuthenticationFilter;
-        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
-    }
+    @Autowired
+    private ScannerAuthenticationFilter scannerAuthenticationFilter;
+    @Autowired
+    private JwtAuthenticationFilter jwtAuthenticationFilter;
+    @Value("${iroco2.authentication.activate}")
+    private boolean authActivate;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf(AbstractHttpConfigurer::disable)
-                .addFilterBefore(scannerAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                .authorizeHttpRequests(
-                        authorize ->
-                                authorize
-                                        .requestMatchers("/api/public/**", "/actuator/health", "/actuator/info")
-                                        .permitAll()
-                                        .requestMatchers(HttpMethod.POST, "/api/scanner")
-                                        .authenticated()
-                                        .requestMatchers("/api/**")
-                                        .hasAnyRole("ADMIN", "MEMBER")
-                                        .requestMatchers("/actuator/**")
-                                        .hasRole("ADMIN")
-                                        .anyRequest()
-                                        .authenticated()
-                )
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .exceptionHandling(Customizer.withDefaults());
-
-        return http.build();
+        log.debug("authentication activated? {}", authActivate);
+        return
+                authActivate ?
+                        http
+                                .csrf(AbstractHttpConfigurer::disable)
+                                .addFilterBefore(scannerAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                                .authorizeHttpRequests(authorize ->
+                                        authorize
+                                                .requestMatchers("/api/public/**", "/actuator/health", "/actuator/info").permitAll()
+                                                .requestMatchers(HttpMethod.POST, "/api/scanner").authenticated()
+                                                .requestMatchers("/api/**").hasAnyRole("ADMIN", "MEMBER")
+                                                .requestMatchers("/actuator/**").hasRole("ADMIN")
+                                                .anyRequest().authenticated()
+                                )
+                                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                                .exceptionHandling(withDefaults())
+                                .build()
+                        : http.authorizeHttpRequests(authorize -> authorize.anyRequest().permitAll())
+                        .build();
     }
 }
