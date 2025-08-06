@@ -32,8 +32,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static org.springframework.security.config.Customizer.withDefaults;
-
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -48,24 +46,25 @@ public class SecurityConfig {
     ) throws Exception {
 
         log.debug("authentication activated? {}", authActivate);
-        return
-                authActivate ?
-                        http
-                                .csrf(AbstractHttpConfigurer::disable)
-                                .addFilterBefore(scannerAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                                .authorizeHttpRequests(authorize ->
-                                        authorize
-                                                .requestMatchers("/api/public/**", "/actuator/health", "/actuator/info").permitAll()
-                                                .requestMatchers(HttpMethod.POST, "/api/scanner").authenticated()
-                                                .requestMatchers("/api/**").hasAnyRole("ADMIN", "MEMBER")
-                                                .requestMatchers("/actuator/**").hasRole("ADMIN")
-                                                .anyRequest().authenticated()
-                                )
-                                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                                .exceptionHandling(withDefaults())
-                                .build()
-                        : http.authorizeHttpRequests(authorize -> authorize.anyRequest().permitAll())
-                        .build();
+
+        return http.csrf(AbstractHttpConfigurer::disable)
+                .addFilterBefore(scannerAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .authorizeHttpRequests(authorize ->
+                        {
+                            if (authActivate) {
+                                authorize
+                                        .requestMatchers("/api/public/**", "/actuator/health", "/actuator/info").permitAll()
+                                        .requestMatchers(HttpMethod.POST, "/api/scanner").authenticated()
+                                        .requestMatchers("/api/**").hasAnyRole("ADMIN", "MEMBER")
+                                        .requestMatchers("/actuator/**").hasRole("ADMIN")
+                                        .anyRequest().authenticated();
+                            } else {
+                                authorize.anyRequest().permitAll();
+                            }
+                        }
+                )
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .build();
     }
 }
