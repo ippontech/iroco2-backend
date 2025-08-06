@@ -20,7 +20,6 @@ package fr.ippon.iroco2.config;
 import fr.ippon.iroco2.access.presentation.JwtAuthenticationFilter;
 import fr.ippon.iroco2.access.presentation.ScannerAuthenticationFilter;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,15 +39,14 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableMethodSecurity
 @Slf4j
 public class SecurityConfig {
-    @Autowired
-    private ScannerAuthenticationFilter scannerAuthenticationFilter;
-    @Autowired
-    private JwtAuthenticationFilter jwtAuthenticationFilter;
-    @Value("${iroco2.authentication.activate}")
-    private boolean authActivate;
-
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(
+            HttpSecurity http,
+            ScannerAuthenticationFilter scannerAuthenticationFilter,
+            JwtAuthenticationFilter jwtAuthenticationFilter,
+            @Value("${iroco2.authentication.activate}") boolean authActivate
+    ) throws Exception {
+
         log.debug("authentication activated? {}", authActivate);
         return
                 authActivate ?

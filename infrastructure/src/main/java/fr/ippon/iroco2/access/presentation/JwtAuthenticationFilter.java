@@ -25,7 +25,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -44,12 +43,15 @@ import static fr.ippon.iroco2.access.presentation.SecurityRole.ADMIN;
 @Component
 @Slf4j
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
-    @Autowired
-    private ClerkHelper clerkHelper;
-    @Autowired
-    private HandlerExceptionResolver handlerExceptionResolver;
-    @Value("${iroco2.authentication.activate}")
-    private boolean authActivate;
+    private final ClerkHelper clerkHelper;
+    private final HandlerExceptionResolver handlerExceptionResolver;
+    private final boolean authActivate;
+
+    public JwtAuthenticationFilter(ClerkHelper clerkHelper, HandlerExceptionResolver handlerExceptionResolver, @Value("${iroco2.authentication.activate}") boolean authActivate) {
+        this.clerkHelper = clerkHelper;
+        this.handlerExceptionResolver = handlerExceptionResolver;
+        this.authActivate = authActivate;
+    }
 
     private static void shouldHaveBearer(String header) {
         if (!header.startsWith("Bearer ")) {
