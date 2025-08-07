@@ -24,17 +24,19 @@ import com.c4_soft.springaddons.security.oauth2.test.annotations.WithMockAuthent
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fr.ippon.iroco2.KmsMockConfig;
+import fr.ippon.iroco2.config.KmsMockConfig;
 import fr.ippon.iroco2.analyzer.persistence.repository.AnalysisRepository;
 import fr.ippon.iroco2.analyzer.persistence.repository.entity.AnalysisEntity;
 import fr.ippon.iroco2.analyzer.presentation.response.AnalysisListElementResponse;
 import fr.ippon.iroco2.analyzer.presentation.response.CreatedAnalysisResponse;
 import fr.ippon.iroco2.common.persistance.entity.EstimatedPayloadEntity;
 import fr.ippon.iroco2.domain.commons.model.ReportStatus;
+
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
+
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -59,7 +61,7 @@ import org.testcontainers.utility.DockerImageName;
 @Testcontainers
 @SpringBootTest
 @AutoConfigureMockMvc
-@WithMockAuthentication(authorities = { "ROLE_MEMBER" }, name = AnalyzerControllerTest.USER_EMAIL)
+@WithMockAuthentication(authorities = {"ROLE_MEMBER"}, name = AnalyzerControllerTest.USER_EMAIL)
 @Transactional
 @Import(KmsMockConfig.class)
 class AnalyzerControllerTest {
@@ -70,7 +72,7 @@ class AnalyzerControllerTest {
 
     @Container
     private static final LocalStackContainer localStackContainer = new LocalStackContainer(
-        DockerImageName.parse("localstack/localstack")
+            DockerImageName.parse("localstack/localstack")
     ).withServices(LocalStackContainer.Service.S3);
 
     @Autowired
@@ -96,20 +98,20 @@ class AnalyzerControllerTest {
         registry.add("spring.cloud.aws.credentials.secret-key", localStackContainer::getSecretKey);
 
         registry.add(
-            "spring.cloud.aws.s3.endpoint",
-            () -> localStackContainer.getEndpointOverride(LocalStackContainer.Service.S3).toString()
+                "spring.cloud.aws.s3.endpoint",
+                () -> localStackContainer.getEndpointOverride(LocalStackContainer.Service.S3).toString()
         );
         registry.add("spring.cloud.aws.s3.region", localStackContainer::getRegion);
         registry.add("spring.cloud.aws.s3.enabled", () -> "true");
     }
 
     private void assertThatUrlReturnedIsWellFormated(ResultActions result)
-        throws UnsupportedEncodingException, JsonProcessingException {
+            throws UnsupportedEncodingException, JsonProcessingException {
         String resultAsString = result.andReturn().getResponse().getContentAsString();
 
         CreatedAnalysisResponse createdAnalysisResponse = objectMapper.readValue(
-            resultAsString,
-            CreatedAnalysisResponse.class
+                resultAsString,
+                CreatedAnalysisResponse.class
         );
 
         String pattern = localStackContainer.getEndpointOverride(LocalStackContainer.Service.S3).toString() + ".*";
@@ -118,9 +120,10 @@ class AnalyzerControllerTest {
     }
 
     private List<AnalysisListElementResponse> readJSonResponse(ResultActions result)
-        throws UnsupportedEncodingException, JsonProcessingException {
+            throws UnsupportedEncodingException, JsonProcessingException {
         String contentAsString = result.andReturn().getResponse().getContentAsString();
-        return objectMapper.readValue(contentAsString, new TypeReference<>() {});
+        return objectMapper.readValue(contentAsString, new TypeReference<>() {
+        });
     }
 
     @Test
@@ -149,11 +152,11 @@ class AnalyzerControllerTest {
 
         // THEN
         result
-            .andExpect(status().isOk())
-            .andExpect(MockMvcResultMatchers.jsonPath("$").isArray())
-            .andExpect(MockMvcResultMatchers.jsonPath("$[0].id").value(analysis.getId().toString()))
-            .andExpect(MockMvcResultMatchers.jsonPath("$[0].status").value(analysis.getStatus().toString()))
-            .andExpect(MockMvcResultMatchers.jsonPath("$[0].co2Gr").value(DEFAULT_TEST_CARBON_GRAM_FOOTPRINT));
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$").isArray())
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].id").value(analysis.getId().toString()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].status").value(analysis.getStatus().toString()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].co2Gr").value(DEFAULT_TEST_CARBON_GRAM_FOOTPRINT));
     }
 
     @Test
@@ -209,16 +212,16 @@ class AnalyzerControllerTest {
 
         // THEN
         result
-            .andExpect(status().isOk())
-            .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(analysisEntity.getId().toString()))
-            .andExpect(MockMvcResultMatchers.jsonPath("$.status").value(analysisEntity.getStatus().toString()))
-            .andExpect(MockMvcResultMatchers.jsonPath("$.payloads").isArray())
-            .andExpect(
-                MockMvcResultMatchers.jsonPath("$.payloads[0].carbonGramFootprint").value(
-                    payloadEntity.getCarbonGramFootprint()
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(analysisEntity.getId().toString()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.status").value(analysisEntity.getStatus().toString()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.payloads").isArray())
+                .andExpect(
+                        MockMvcResultMatchers.jsonPath("$.payloads[0].carbonGramFootprint").value(
+                                payloadEntity.getCarbonGramFootprint()
+                        )
                 )
-            )
-            .andExpect(MockMvcResultMatchers.jsonPath("$.payloads[0].name").value(DEFAULT_TEST_PAYLOAD_NAME));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.payloads[0].name").value(DEFAULT_TEST_PAYLOAD_NAME));
     }
 
     private @NotNull EstimatedPayloadEntity givenExistingAnalysisWithPayload(String owner) {

@@ -17,10 +17,7 @@
  */
 package fr.ippon.iroco2.access.aws_kms;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import fr.ippon.iroco2.KmsMockConfig;
-import fr.ippon.iroco2.S3MockConfig;
+import fr.ippon.iroco2.config.TestAwsConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -28,16 +25,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.TestPropertySource;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @SpringBootTest
 @EnableConfigurationProperties(KmsProperties.class)
 @TestPropertySource(
-    properties = {
-        "spring.cloud.aws.kms.region=us-east-1",
-        "spring.cloud.aws.kms.endpoint=http://localhost:4566",
-        "spring.cloud.aws.kms.profile=iroco-dev",
-    }
+        properties = {
+                "spring.cloud.aws.kms.region=us-east-1",
+                "spring.cloud.aws.kms.endpoint=http://localhost:4566",
+                "spring.cloud.aws.kms.profile=iroco-dev",
+        }
 )
-@Import({ S3MockConfig.class, KmsMockConfig.class })
+@Import(TestAwsConfig.class)
 class KmsPropertiesTest {
 
     @Autowired

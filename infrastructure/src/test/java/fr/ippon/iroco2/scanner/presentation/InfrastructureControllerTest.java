@@ -18,6 +18,8 @@
 package fr.ippon.iroco2.scanner.presentation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fr.ippon.iroco2.access.presentation.JwtAuthenticationFilter;
+import fr.ippon.iroco2.access.presentation.ScannerAuthenticationFilter;
 import fr.ippon.iroco2.calculateur.presentation.InfrastructureController;
 import fr.ippon.iroco2.calculateur.presentation.request.InfrastructureRequest;
 import fr.ippon.iroco2.domain.calculateur.api.EstimationSvc;
@@ -33,6 +35,8 @@ import org.mockito.Captor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -55,7 +59,12 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(InfrastructureController.class)
+@WebMvcTest(value = InfrastructureController.class,
+        excludeFilters = @ComponentScan.Filter(
+                type = FilterType.ASSIGNABLE_TYPE,
+                value = {JwtAuthenticationFilter.class, ScannerAuthenticationFilter.class}
+        )
+)
 @WithMockUser
 class InfrastructureControllerTest {
     @Captor
