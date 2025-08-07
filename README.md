@@ -53,9 +53,8 @@ This is the backend of the IroCO2 application. Developed using Java 21 and Sprin
 
 ## 📦 Project Structure
 
-- `legacy/` : Main Spring Boot application (REST API, business logic, persistence, security)
 - `domain/` : Domain model and business rules
-- `infrastructure/` : Infrastructure layer (external services, adapters)
+- `infrastructure/` : Infrastructure layer with Main Spring Boot application (external services, adapters)
 - `docker/` : Dockerfile, local development and CI tools (compose, scripts)
 - `docs/` : Backend documentation
 - `tf/` : Terraform infrastructure as code
@@ -66,14 +65,14 @@ This is the backend of the IroCO2 application. Developed using Java 21 and Sprin
 
 - Unit and integration tests via Maven:
   ```bash
-  mvn test -pl legacy
+  mvn test
   ```
 - Cucumber BDD tests included
 - Testcontainers used for integration tests (PostgreSQL, Localstack)
 
 ## 🛡️ Security & Auth
 
-- Spring Security + JWT (see configuration in `legacy` module)
+- Spring Security + JWT (see configuration in `infrastructure` module)
 - OAuth2 test support via `spring-addons-oauth2-test`
 
 ---
