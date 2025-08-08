@@ -62,3 +62,9 @@ target/
 
 # Other IDE files
 *.swp
+
+# Terraform
+.tfstate
+.tfstate.backup
+.tfvars
+.terraform
