@@ -141,6 +141,14 @@ docker compose -f docker/local.docker-compose.yml up
   ```
 
 
+## 🚀 Deploy
+
+After building the Java application, you will need to build and push the docker image to your repository. Use the Dockerfilek in the `docker/` directory.
+
+Then you can deploy the application using Terraform. 
+
+*WIP: More docs to come.*
+
 ## 📝 License
 
 Distributed under the Apache 2.0 License. See [LICENSE](./LICENSE) for more information.
