@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ActiveProfiles("no-auth")
-class JwtAuthenticationFilteWithNoAuthTest extends TestContainersPostgresqlConfig {
+class JwtAuthenticationFilterWithNoAuthTest extends TestContainersPostgresqlConfig {
     private static final String PUBLIC_URL = "/api/public/v2/catalog/services";
     private static final String PRIVATE_URL = "/api/cloud-service-providers";
 
