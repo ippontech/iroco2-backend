@@ -12,11 +12,11 @@ OUTPUT="json"
 
 # Configure the localstack profile
 if ! aws configure list --profile $PROFILE_NAME >/dev/null 2>&1; then
-aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID --profile $PROFILE_NAME
-aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY --profile $PROFILE_NAME
-aws configure set region $AWS_REGION --profile $PROFILE_NAME
-aws configure set output $OUTPUT --profile $PROFILE_NAME
- echo "AWS CLI profile '$PROFILE_NAME' created."
+  aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID --profile $PROFILE_NAME
+  aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY --profile $PROFILE_NAME
+  aws configure set region $AWS_REGION --profile $PROFILE_NAME
+  aws configure set output $OUTPUT --profile $PROFILE_NAME
+  echo "AWS CLI profile '$PROFILE_NAME' created."
 else
   echo "AWS CLI profile '$PROFILE_NAME' is already configured."
 fi
