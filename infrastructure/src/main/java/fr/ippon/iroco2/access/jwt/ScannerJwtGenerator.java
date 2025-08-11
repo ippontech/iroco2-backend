@@ -20,11 +20,11 @@ package fr.ippon.iroco2.access.jwt;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import fr.ippon.iroco2.access.aws_kms.AwsKeyManagementService;
-import java.util.Base64;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
+
+import java.util.Base64;
 
 @Component
 public class ScannerJwtGenerator {
@@ -35,9 +35,9 @@ public class ScannerJwtGenerator {
     private final String audience;
 
     public ScannerJwtGenerator(
-        AwsKeyManagementService awsKeyManagementService,
-        @Value("${jwt.issuer}") String issuer,
-        @Value("${jwt.audience}") String audience
+            AwsKeyManagementService awsKeyManagementService,
+            @Value("${jwt.issuer}") String issuer,
+            @Value("${jwt.audience}") String audience
     ) {
         this.objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
         this.awsKeyManagementService = awsKeyManagementService;
@@ -50,9 +50,9 @@ public class ScannerJwtGenerator {
         final JwtTokenPayload payload = createJwtTokenPayload(expireInSeconds, awsAccountId);
 
         final String unsignedToken = String.format(
-            "%s.%s",
-            encodeBase64Url(objectMapper.writeValueAsBytes(header)),
-            encodeBase64Url(objectMapper.writeValueAsBytes(payload))
+                "%s.%s",
+                encodeBase64Url(objectMapper.writeValueAsBytes(header)),
+                encodeBase64Url(objectMapper.writeValueAsBytes(payload))
         );
         final byte[] signature = awsKeyManagementService.sign(unsignedToken);
         final String encodedSignature = encodeBase64Url(signature);

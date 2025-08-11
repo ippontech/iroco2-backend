@@ -17,15 +17,6 @@
  */
 package fr.ippon.iroco2.access.jwt;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
-import fr.ippon.iroco2.access.aws_kms.AwsKeyManagementService;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -38,22 +29,28 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 @ExtendWith(MockitoExtension.class)
 class ScannerJwtGeneratorTest {
-
-    private ScannerJwtGenerator scannerJwtGenerator;
-
-    @Mock
-    private AwsKeyManagementService awsKeyManagementService;
-
-    @Captor
-    private ArgumentCaptor<String> unsignedTokenCaptor;
 
     private final String issuer = "issuer";
     private final String audience = "audience";
     private final String testEmail = "user@example.com";
     private final String testAwsAccountId = "123456789012";
     private final long testExpiration = 3600L;
+    private ScannerJwtGenerator scannerJwtGenerator;
+    @Mock
+    private AwsKeyManagementService awsKeyManagementService;
+    @Captor
+    private ArgumentCaptor<String> unsignedTokenCaptor;
 
     @BeforeEach
     void setupSecurityContext() {
@@ -105,10 +102,10 @@ class ScannerJwtGeneratorTest {
 
         // Assert
         assertThat(payload)
-            .contains("\"iss\":\"" + issuer + "\"")
-            .contains("\"aud\":\"" + audience + "\"")
-            .contains("\"sub\":\"" + testEmail + "\"")
-            .contains("\"aws_account_id\":\"" + testAwsAccountId + "\"");
+                .contains("\"iss\":\"" + issuer + "\"")
+                .contains("\"aud\":\"" + audience + "\"")
+                .contains("\"sub\":\"" + testEmail + "\"")
+                .contains("\"aws_account_id\":\"" + testAwsAccountId + "\"");
     }
 
     @Test

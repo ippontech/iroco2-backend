@@ -19,11 +19,11 @@ package fr.ippon.iroco2.cucumber.infrastructure;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fr.ippon.iroco2.calculator.infrastructure.component.primary.ComponentRequest;
+import fr.ippon.iroco2.calculator.infrastructure.component.primary.ConfigurationValueRequest;
+import fr.ippon.iroco2.calculator.infrastructure.component.secondary.ComponentEntity;
+import fr.ippon.iroco2.calculator.infrastructure.component.secondary.ComponentRepository;
 import fr.ippon.iroco2.cucumber.common.SharedMockMvcResult;
-import fr.ippon.iroco2.calculateur.presentation.request.ComponentRequest;
-import fr.ippon.iroco2.calculateur.presentation.request.ConfigurationValueRequest;
-import fr.ippon.iroco2.calculateur.persistence.repository.entity.ComponentEntity;
-import fr.ippon.iroco2.calculateur.persistence.repository.ComponentRepository;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;

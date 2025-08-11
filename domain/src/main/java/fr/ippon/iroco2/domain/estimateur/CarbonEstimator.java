@@ -17,9 +17,9 @@
  */
 package fr.ippon.iroco2.domain.estimateur;
 
-import fr.ippon.iroco2.domain.calculateur.model.Component;
-import fr.ippon.iroco2.domain.calculateur.model.ConfiguredSetting;
-import fr.ippon.iroco2.domain.calculateur.model.emu.SettingName;
+import fr.ippon.iroco2.domain.calculator.model.Component;
+import fr.ippon.iroco2.domain.calculator.model.ConfiguredSetting;
+import fr.ippon.iroco2.domain.calculator.model.emu.SettingName;
 import fr.ippon.iroco2.domain.commons.DomainService;
 import fr.ippon.iroco2.domain.commons.exception.FunctionalException;
 import fr.ippon.iroco2.domain.commons.model.Payload;
@@ -41,9 +41,9 @@ import java.time.Duration;
 import java.util.Optional;
 import java.util.function.Function;
 
-import static fr.ippon.iroco2.domain.calculateur.model.emu.SettingName.MEMORY_IN_MEGA_BYTE;
-import static fr.ippon.iroco2.domain.calculateur.model.emu.SettingName.PROCESSOR_ARCHITECTURE;
-import static fr.ippon.iroco2.domain.calculateur.model.emu.SettingName.STORAGE_IN_MEGA_BYTE;
+import static fr.ippon.iroco2.domain.calculator.model.emu.SettingName.MEMORY_IN_MEGA_BYTE;
+import static fr.ippon.iroco2.domain.calculator.model.emu.SettingName.PROCESSOR_ARCHITECTURE;
+import static fr.ippon.iroco2.domain.calculator.model.emu.SettingName.STORAGE_IN_MEGA_BYTE;
 import static fr.ippon.iroco2.domain.commons.model.PayloadConfiguration.INSTANCE_TYPE;
 import static fr.ippon.iroco2.domain.commons.model.PayloadConfiguration.S3_STORAGE;
 import static fr.ippon.iroco2.domain.estimateur.TimeConstant.AVERAGE_DAYS_PER_MONTH;
