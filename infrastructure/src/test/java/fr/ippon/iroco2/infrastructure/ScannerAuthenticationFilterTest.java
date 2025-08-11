@@ -30,6 +30,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers;
+import org.springframework.test.context.junit.jupiter.EnabledIf;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
@@ -80,6 +81,7 @@ class ScannerAuthenticationFilterTest extends TestContainersPostgresqlConfig {
     }
 
     @Test
+    @EnabledIf(expression = "#{environment['clerk.secret.key'] != ''}", loadContext = true)
     void scanner_api_should_return_200_and_must_create_user_security_context() throws Exception {
         String token = testSecurityUtils.buildScannerToken();
         when(scannerJwtVerifier.verify(token)).thenReturn(true);
