@@ -19,10 +19,11 @@ package fr.ippon.iroco2.config;
 
 import fr.ippon.iroco2.access.presentation.JwtAuthenticationFilter;
 import fr.ippon.iroco2.access.presentation.ScannerAuthenticationFilter;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -34,42 +35,36 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
+@Slf4j
 public class SecurityConfig {
-
-    private final ScannerAuthenticationFilter scannerAuthenticationFilter;
-    private final JwtAuthenticationFilter jwtAuthenticationFilter;
-
-    public SecurityConfig(
-            ScannerAuthenticationFilter scannerAuthenticationFilter,
-            JwtAuthenticationFilter jwtAuthenticationFilter
-    ) {
-        this.scannerAuthenticationFilter = scannerAuthenticationFilter;
-        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
-    }
-
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf(AbstractHttpConfigurer::disable)
+    public SecurityFilterChain securityFilterChain(
+            HttpSecurity http,
+            ScannerAuthenticationFilter scannerAuthenticationFilter,
+            JwtAuthenticationFilter jwtAuthenticationFilter,
+            @Value("${iroco2.authentication.activate}") boolean authActivate
+    ) throws Exception {
+
+        log.debug("authentication activated? {}", authActivate);
+
+        return http.csrf(AbstractHttpConfigurer::disable)
                 .addFilterBefore(scannerAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                .authorizeHttpRequests(
-                        authorize ->
+                .authorizeHttpRequests(authorize ->
+                        {
+                            if (authActivate) {
                                 authorize
-                                        .requestMatchers("/api/public/**", "/actuator/health", "/actuator/info")
-                                        .permitAll()
-                                        .requestMatchers(HttpMethod.POST, "/api/scanner")
-                                        .authenticated()
-                                        .requestMatchers("/api/**")
-                                        .hasAnyRole("ADMIN", "MEMBER")
-                                        .requestMatchers("/actuator/**")
-                                        .hasRole("ADMIN")
-                                        .anyRequest()
-                                        .authenticated()
+                                        .requestMatchers("/api/public/**", "/actuator/health", "/actuator/info").permitAll()
+                                        .requestMatchers(HttpMethod.POST, "/api/scanner").authenticated()
+                                        .requestMatchers("/api/**").hasAnyRole("ADMIN", "MEMBER")
+                                        .requestMatchers("/actuator/**").hasRole("ADMIN")
+                                        .anyRequest().authenticated();
+                            } else {
+                                authorize.anyRequest().permitAll();
+                            }
+                        }
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .exceptionHandling(Customizer.withDefaults());
-
-        return http.build();
+                .build();
     }
 }
