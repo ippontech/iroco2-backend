@@ -18,16 +18,16 @@
 package fr.ippon.iroco2.cucumber.infrastructure;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fr.ippon.iroco2.calculateur.persistence.repository.CloudServiceProviderRepository;
-import fr.ippon.iroco2.calculateur.persistence.repository.entity.CloudServiceProviderEntity;
-import fr.ippon.iroco2.calculateur.persistence.repository.entity.CloudServiceProviderRegionEntity;
-import fr.ippon.iroco2.calculateur.persistence.repository.CloudServiceProviderRegionRepository;
-import fr.ippon.iroco2.domain.commons.exception.NotFoundException;
+import fr.ippon.iroco2.calculator.infrastructure.primary.InfrastructureRequest;
+import fr.ippon.iroco2.calculator.infrastructure.secondary.InfrastructureEntity;
+import fr.ippon.iroco2.calculator.infrastructure.secondary.InfrastructureRepository;
+import fr.ippon.iroco2.catalog.secondary.provider.CloudServiceProviderEntity;
+import fr.ippon.iroco2.catalog.secondary.provider.CloudServiceProviderRepository;
+import fr.ippon.iroco2.catalog.secondary.region.CloudServiceProviderRegionEntity;
+import fr.ippon.iroco2.catalog.secondary.region.CloudServiceProviderRegionRepository;
 import fr.ippon.iroco2.config.SecurityTestConfig;
 import fr.ippon.iroco2.cucumber.common.SharedMockMvcResult;
-import fr.ippon.iroco2.calculateur.presentation.request.InfrastructureRequest;
-import fr.ippon.iroco2.calculateur.persistence.repository.entity.InfrastructureEntity;
-import fr.ippon.iroco2.calculateur.persistence.repository.InfrastructureRepository;
+import fr.ippon.iroco2.domain.commons.exception.NotFoundException;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;

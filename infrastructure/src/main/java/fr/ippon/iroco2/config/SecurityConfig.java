@@ -17,8 +17,8 @@
  */
 package fr.ippon.iroco2.config;
 
-import fr.ippon.iroco2.access.presentation.JwtAuthenticationFilter;
-import fr.ippon.iroco2.access.presentation.ScannerAuthenticationFilter;
+import fr.ippon.iroco2.access.primary.JwtAuthenticationFilter;
+import fr.ippon.iroco2.access.primary.ScannerAuthenticationFilter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

@@ -17,7 +17,6 @@
  */
 package fr.ippon.iroco2.config;
 
-import fr.ippon.iroco2.infrastructure.presentation.StringToAWSDataCenterConverter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;

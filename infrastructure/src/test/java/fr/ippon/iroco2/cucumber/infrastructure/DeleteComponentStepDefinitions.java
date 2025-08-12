@@ -17,20 +17,21 @@
  */
 package fr.ippon.iroco2.cucumber.infrastructure;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
+import fr.ippon.iroco2.calculator.infrastructure.component.secondary.ComponentRepository;
 import fr.ippon.iroco2.cucumber.common.SharedMockMvcResult;
-import fr.ippon.iroco2.calculateur.persistence.repository.ComponentRepository;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import java.util.UUID;
 import lombok.SneakyThrows;
 import org.assertj.core.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.UUID;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @Transactional

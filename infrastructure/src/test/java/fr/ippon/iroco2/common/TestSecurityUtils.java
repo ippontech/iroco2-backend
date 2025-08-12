@@ -22,7 +22,11 @@ import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import fr.ippon.iroco2.access.presentation.SecurityRole;
+import fr.ippon.iroco2.access.primary.SecurityRole;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.security.KeyFactory;
 import java.security.interfaces.RSAPrivateKey;
@@ -33,11 +37,6 @@ import java.time.Instant;
 import java.util.Base64;
 import java.util.Date;
 import java.util.UUID;
-
-import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j

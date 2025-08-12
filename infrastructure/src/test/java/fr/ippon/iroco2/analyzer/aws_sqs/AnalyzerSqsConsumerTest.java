@@ -17,17 +17,17 @@
  */
 package fr.ippon.iroco2.analyzer.aws_sqs;
 
-import fr.ippon.iroco2.analyzer.persistence.repository.AnalysisRepository;
-import fr.ippon.iroco2.analyzer.persistence.repository.entity.AnalysisEntity;
+import fr.ippon.iroco2.analyzer.secondary.AnalysisEntity;
+import fr.ippon.iroco2.analyzer.secondary.AnalysisRepository;
 import fr.ippon.iroco2.common.TestLocalStackWithSQS;
-import fr.ippon.iroco2.common.aws_sqs.request.ServiceCUR;
-import fr.ippon.iroco2.common.aws_sqs.request.ServiceEC2CUR;
-import fr.ippon.iroco2.common.aws_sqs.request.ServiceTypeCUR;
+import fr.ippon.iroco2.common.aws.cur.ServiceCUR;
+import fr.ippon.iroco2.common.aws.cur.ServiceEC2CUR;
+import fr.ippon.iroco2.common.aws.cur.ServiceTypeCUR;
+import fr.ippon.iroco2.common.secondary.GlobalEnergyMixEntity;
+import fr.ippon.iroco2.common.secondary.GlobalEnergyMixRepository;
 import fr.ippon.iroco2.domain.analyzer.model.Analysis;
-import fr.ippon.iroco2.domain.analyzer.spi.AnalysisStorage;
-import fr.ippon.iroco2.domain.calculateur.model.emu.AWSDataCenter;
-import fr.ippon.iroco2.estimateur.persistence.repository.GlobalEnergyMixRepository;
-import fr.ippon.iroco2.estimateur.persistence.repository.entity.GlobalEnergyMixEntity;
+import fr.ippon.iroco2.domain.analyzer.secondary.AnalysisStorage;
+import fr.ippon.iroco2.domain.calculator.model.emu.AWSDataCenter;
 import org.assertj.core.api.Assertions;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;

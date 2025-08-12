@@ -18,16 +18,16 @@
 package fr.ippon.iroco2.scanner.aws_sqs;
 
 import fr.ippon.iroco2.common.TestLocalStackWithSQS;
-import fr.ippon.iroco2.common.aws_sqs.request.ServiceCUR;
-import fr.ippon.iroco2.common.aws_sqs.request.ServiceEC2CUR;
-import fr.ippon.iroco2.common.aws_sqs.request.ServiceTypeCUR;
-import fr.ippon.iroco2.domain.calculateur.model.emu.AWSDataCenter;
+import fr.ippon.iroco2.common.aws.cur.ServiceCUR;
+import fr.ippon.iroco2.common.aws.cur.ServiceEC2CUR;
+import fr.ippon.iroco2.common.aws.cur.ServiceTypeCUR;
+import fr.ippon.iroco2.common.secondary.GlobalEnergyMixEntity;
+import fr.ippon.iroco2.common.secondary.GlobalEnergyMixRepository;
+import fr.ippon.iroco2.domain.calculator.model.emu.AWSDataCenter;
 import fr.ippon.iroco2.domain.scanner.model.Scan;
-import fr.ippon.iroco2.domain.scanner.spi.ScanStorage;
-import fr.ippon.iroco2.estimateur.persistence.repository.GlobalEnergyMixRepository;
-import fr.ippon.iroco2.estimateur.persistence.repository.entity.GlobalEnergyMixEntity;
-import fr.ippon.iroco2.scanner.persistence.repository.ScannerRepository;
-import fr.ippon.iroco2.scanner.persistence.repository.entity.ScanEntity;
+import fr.ippon.iroco2.domain.scanner.secondary.ScanStorage;
+import fr.ippon.iroco2.scanner.secondary.ScanEntity;
+import fr.ippon.iroco2.scanner.secondary.ScannerRepository;
 import org.assertj.core.api.Assertions;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;

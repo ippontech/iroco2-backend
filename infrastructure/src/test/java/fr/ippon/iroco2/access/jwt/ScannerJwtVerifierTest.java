@@ -17,12 +17,14 @@
  */
 package fr.ippon.iroco2.access.jwt;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
-
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import fr.ippon.iroco2.access.aws_kms.AwsKeyManagementService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
@@ -30,23 +32,18 @@ import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Date;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class ScannerJwtVerifierTest {
 
-    private ScannerJwtVerifier scannerJwtVerifier;
-
-    @Mock
-    private AwsKeyManagementService awsKeyManagementService;
-
     private final String issuer = "testIssuer";
     private final String audience = "testAudience";
-
+    private ScannerJwtVerifier scannerJwtVerifier;
+    @Mock
+    private AwsKeyManagementService awsKeyManagementService;
     private RSAPrivateKey privateKey;
     private RSAPrivateKey anotherPrivateKey;
 
@@ -142,96 +139,96 @@ class ScannerJwtVerifierTest {
     private String createValidToken() {
         Algorithm algorithm = Algorithm.RSA256(null, privateKey);
         return JWT.create()
-            .withIssuer(issuer)
-            .withAudience(audience)
-            .withSubject("testSub")
-            .withClaim("aws_account_id", "123456789012")
-            .withExpiresAt(new Date(System.currentTimeMillis() + 3600 * 1000))
-            .sign(algorithm);
+                .withIssuer(issuer)
+                .withAudience(audience)
+                .withSubject("testSub")
+                .withClaim("aws_account_id", "123456789012")
+                .withExpiresAt(new Date(System.currentTimeMillis() + 3600 * 1000))
+                .sign(algorithm);
     }
 
     private String createTokenWithIssuer(String issuer) {
         Algorithm algorithm = Algorithm.RSA256(null, privateKey);
         return JWT.create()
-            .withIssuer(issuer)
-            .withAudience(audience)
-            .withSubject("testSub")
-            .withClaim("aws_account_id", "123456789012")
-            .withExpiresAt(new Date(System.currentTimeMillis() + 3600 * 1000))
-            .sign(algorithm);
+                .withIssuer(issuer)
+                .withAudience(audience)
+                .withSubject("testSub")
+                .withClaim("aws_account_id", "123456789012")
+                .withExpiresAt(new Date(System.currentTimeMillis() + 3600 * 1000))
+                .sign(algorithm);
     }
 
     private String createTokenWithAudience(String audience) {
         Algorithm algorithm = Algorithm.RSA256(null, privateKey);
         return JWT.create()
-            .withIssuer(issuer)
-            .withAudience(audience)
-            .withSubject("testSub")
-            .withClaim("aws_account_id", "123456789012")
-            .withExpiresAt(new Date(System.currentTimeMillis() + 3600 * 1000))
-            .sign(algorithm);
+                .withIssuer(issuer)
+                .withAudience(audience)
+                .withSubject("testSub")
+                .withClaim("aws_account_id", "123456789012")
+                .withExpiresAt(new Date(System.currentTimeMillis() + 3600 * 1000))
+                .sign(algorithm);
     }
 
     private String createTokenWithoutSub() {
         Algorithm algorithm = Algorithm.RSA256(null, privateKey);
         return JWT.create()
-            .withIssuer(issuer)
-            .withAudience(audience)
-            .withClaim("aws_account_id", "123456789012")
-            .withExpiresAt(new Date(System.currentTimeMillis() + 3600 * 1000))
-            .sign(algorithm);
+                .withIssuer(issuer)
+                .withAudience(audience)
+                .withClaim("aws_account_id", "123456789012")
+                .withExpiresAt(new Date(System.currentTimeMillis() + 3600 * 1000))
+                .sign(algorithm);
     }
 
     private String createTokenWithoutExp() {
         Algorithm algorithm = Algorithm.RSA256(null, privateKey);
         return JWT.create()
-            .withIssuer(issuer)
-            .withAudience(audience)
-            .withClaim("aws_account_id", "123456789012")
-            .withSubject("testSub")
-            .sign(algorithm);
+                .withIssuer(issuer)
+                .withAudience(audience)
+                .withClaim("aws_account_id", "123456789012")
+                .withSubject("testSub")
+                .sign(algorithm);
     }
 
     private String createExpiredToken() {
         Algorithm algorithm = Algorithm.RSA256(null, privateKey);
         return JWT.create()
-            .withIssuer(issuer)
-            .withAudience(audience)
-            .withClaim("aws_account_id", "123456789012")
-            .withSubject("testSub")
-            .withExpiresAt(new Date(System.currentTimeMillis() - 300 * 1000))
-            .sign(algorithm);
+                .withIssuer(issuer)
+                .withAudience(audience)
+                .withClaim("aws_account_id", "123456789012")
+                .withSubject("testSub")
+                .withExpiresAt(new Date(System.currentTimeMillis() - 300 * 1000))
+                .sign(algorithm);
     }
 
     private String createTokenExpiredWithinLeeway() {
         Algorithm algorithm = Algorithm.RSA256(null, privateKey);
         return JWT.create()
-            .withIssuer(issuer)
-            .withAudience(audience)
-            .withClaim("aws_account_id", "123456789012")
-            .withSubject("testSub")
-            .withExpiresAt(new Date(System.currentTimeMillis() - 150 * 1000))
-            .sign(algorithm);
+                .withIssuer(issuer)
+                .withAudience(audience)
+                .withClaim("aws_account_id", "123456789012")
+                .withSubject("testSub")
+                .withExpiresAt(new Date(System.currentTimeMillis() - 150 * 1000))
+                .sign(algorithm);
     }
 
     private String createTokenWithInvalidSignature() {
         Algorithm algorithm = Algorithm.RSA256(null, anotherPrivateKey);
         return JWT.create()
-            .withIssuer(issuer)
-            .withAudience(audience)
-            .withClaim("aws_account_id", "123456789012")
-            .withSubject("testSub")
-            .withExpiresAt(new Date(System.currentTimeMillis() + 3600 * 1000))
-            .sign(algorithm);
+                .withIssuer(issuer)
+                .withAudience(audience)
+                .withClaim("aws_account_id", "123456789012")
+                .withSubject("testSub")
+                .withExpiresAt(new Date(System.currentTimeMillis() + 3600 * 1000))
+                .sign(algorithm);
     }
 
     private String createTokenWithoutAwsAccountId() {
         Algorithm algorithm = Algorithm.RSA256(null, privateKey);
         return JWT.create()
-            .withIssuer(issuer)
-            .withAudience(audience)
-            .withSubject("testSub")
-            .withExpiresAt(new Date(System.currentTimeMillis() + 3600 * 1000))
-            .sign(algorithm);
+                .withIssuer(issuer)
+                .withAudience(audience)
+                .withSubject("testSub")
+                .withExpiresAt(new Date(System.currentTimeMillis() + 3600 * 1000))
+                .sign(algorithm);
     }
 }

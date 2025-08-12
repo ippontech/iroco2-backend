@@ -19,15 +19,15 @@ package fr.ippon.iroco2.domain.analyzer;
 
 import fr.ippon.iroco2.domain.analyzer.exception.AnalysisNotFoundException;
 import fr.ippon.iroco2.domain.analyzer.model.Analysis;
-import fr.ippon.iroco2.domain.analyzer.spi.AnalysisStorage;
+import fr.ippon.iroco2.domain.analyzer.secondary.AnalysisStorage;
 import fr.ippon.iroco2.domain.commons.exception.FunctionalException;
 import fr.ippon.iroco2.domain.commons.exception.NotFoundException;
 import fr.ippon.iroco2.domain.commons.exception.UnauthorizedActionException;
 import fr.ippon.iroco2.domain.commons.model.Payload;
 import fr.ippon.iroco2.domain.commons.model.ReportStatus;
-import fr.ippon.iroco2.domain.commons.spi.SessionProvider;
+import fr.ippon.iroco2.domain.commons.secondary.SessionProvider;
 import fr.ippon.iroco2.domain.commons.svc.DateProvider;
-import fr.ippon.iroco2.domain.estimateur.CarbonEstimator;
+import fr.ippon.iroco2.domain.estimator.CarbonEstimator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
