@@ -26,7 +26,7 @@ import fr.ippon.iroco2.common.aws.cur.ServiceTypeCUR;
 import fr.ippon.iroco2.common.secondary.GlobalEnergyMixEntity;
 import fr.ippon.iroco2.common.secondary.GlobalEnergyMixRepository;
 import fr.ippon.iroco2.domain.analyzer.model.Analysis;
-import fr.ippon.iroco2.domain.analyzer.spi.AnalysisStorage;
+import fr.ippon.iroco2.domain.analyzer.secondary.AnalysisStorage;
 import fr.ippon.iroco2.domain.calculator.model.emu.AWSDataCenter;
 import org.assertj.core.api.Assertions;
 import org.jetbrains.annotations.NotNull;

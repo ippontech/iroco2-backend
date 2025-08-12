@@ -17,9 +17,9 @@
  */
 package fr.ippon.iroco2.domain.calculator;
 
-import fr.ippon.iroco2.domain.calculator.api.ServiceConfigurationSettingSvc;
 import fr.ippon.iroco2.domain.calculator.model.ServiceConfigurationSetting;
-import fr.ippon.iroco2.domain.calculator.spi.ServiceConfigurationSettingStorage;
+import fr.ippon.iroco2.domain.calculator.primary.ServiceConfigurationSettingSvc;
+import fr.ippon.iroco2.domain.calculator.secondary.ServiceConfigurationSettingStorage;
 import fr.ippon.iroco2.domain.commons.DomainService;
 import lombok.RequiredArgsConstructor;
 

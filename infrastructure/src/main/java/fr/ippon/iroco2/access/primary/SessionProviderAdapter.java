@@ -17,7 +17,7 @@
  */
 package fr.ippon.iroco2.access.primary;
 
-import fr.ippon.iroco2.domain.commons.spi.SessionProvider;
+import fr.ippon.iroco2.domain.commons.secondary.SessionProvider;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 

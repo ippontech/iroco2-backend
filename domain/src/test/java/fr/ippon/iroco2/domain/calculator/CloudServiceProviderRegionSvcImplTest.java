@@ -18,7 +18,7 @@
 package fr.ippon.iroco2.domain.calculator;
 
 import fr.ippon.iroco2.domain.calculator.model.CloudServiceProviderRegion;
-import fr.ippon.iroco2.domain.calculator.spi.CloudServiceProviderRegionStorage;
+import fr.ippon.iroco2.domain.calculator.secondary.CloudServiceProviderRegionStorage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

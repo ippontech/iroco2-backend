@@ -18,7 +18,7 @@
 package fr.ippon.iroco2.calculator.infrastructure.secondary;
 
 import fr.ippon.iroco2.domain.calculator.model.Infrastructure;
-import fr.ippon.iroco2.domain.calculator.spi.InfrastructureStorage;
+import fr.ippon.iroco2.domain.calculator.secondary.InfrastructureStorage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

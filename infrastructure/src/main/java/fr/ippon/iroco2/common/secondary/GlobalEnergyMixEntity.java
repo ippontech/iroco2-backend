@@ -17,7 +17,7 @@
  */
 package fr.ippon.iroco2.common.secondary;
 
-import fr.ippon.iroco2.domain.estimateur.model.energy_mix.GlobalEnergyMix;
+import fr.ippon.iroco2.domain.estimator.model.energy_mix.GlobalEnergyMix;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

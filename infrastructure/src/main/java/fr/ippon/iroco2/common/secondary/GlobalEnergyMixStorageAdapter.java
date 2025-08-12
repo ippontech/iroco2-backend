@@ -17,8 +17,8 @@
  */
 package fr.ippon.iroco2.common.secondary;
 
-import fr.ippon.iroco2.domain.estimateur.model.energy_mix.GlobalEnergyMix;
-import fr.ippon.iroco2.domain.estimateur.spi.GlobalEnergyMixStorage;
+import fr.ippon.iroco2.domain.estimator.model.energy_mix.GlobalEnergyMix;
+import fr.ippon.iroco2.domain.estimator.secondary.GlobalEnergyMixStorage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

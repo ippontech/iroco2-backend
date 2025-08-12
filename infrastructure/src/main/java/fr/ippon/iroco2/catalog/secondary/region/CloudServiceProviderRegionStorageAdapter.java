@@ -18,7 +18,7 @@
 package fr.ippon.iroco2.catalog.secondary.region;
 
 import fr.ippon.iroco2.domain.calculator.model.CloudServiceProviderRegion;
-import fr.ippon.iroco2.domain.calculator.spi.CloudServiceProviderRegionStorage;
+import fr.ippon.iroco2.domain.calculator.secondary.CloudServiceProviderRegionStorage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

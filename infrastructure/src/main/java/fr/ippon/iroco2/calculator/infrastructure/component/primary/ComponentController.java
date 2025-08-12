@@ -18,8 +18,8 @@
 package fr.ippon.iroco2.calculator.infrastructure.component.primary;
 
 import fr.ippon.iroco2.common.primary.security.IsMember;
-import fr.ippon.iroco2.domain.calculator.api.ComponentSvc;
 import fr.ippon.iroco2.domain.calculator.model.Component;
+import fr.ippon.iroco2.domain.calculator.primary.ComponentSvc;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;

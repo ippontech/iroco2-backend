@@ -22,7 +22,7 @@ import fr.ippon.iroco2.access.primary.ScannerAuthenticationFilter;
 import fr.ippon.iroco2.common.secondary.EstimatedPayloadEntity;
 import fr.ippon.iroco2.domain.commons.exception.NotFoundException;
 import fr.ippon.iroco2.domain.commons.model.ReportStatus;
-import fr.ippon.iroco2.domain.scanner.api.ScannerSvc;
+import fr.ippon.iroco2.domain.scanner.primary.ScannerSvc;
 import fr.ippon.iroco2.scanner.secondary.ScanEntity;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

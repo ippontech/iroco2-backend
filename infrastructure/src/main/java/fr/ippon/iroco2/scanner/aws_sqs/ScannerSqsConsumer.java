@@ -19,7 +19,7 @@ package fr.ippon.iroco2.scanner.aws_sqs;
 
 import fr.ippon.iroco2.common.aws.cur.ServiceCUR;
 import fr.ippon.iroco2.domain.commons.exception.FunctionalException;
-import fr.ippon.iroco2.domain.scanner.api.ScannerSvc;
+import fr.ippon.iroco2.domain.scanner.primary.ScannerSvc;
 import io.awspring.cloud.sqs.annotation.SqsListener;
 import io.awspring.cloud.sqs.annotation.SqsListenerAcknowledgementMode;
 import lombok.RequiredArgsConstructor;

@@ -18,7 +18,7 @@
 package fr.ippon.iroco2.catalog.primary;
 
 import fr.ippon.iroco2.catalog.primary.service.CloudServiceProviderServiceResponse;
-import fr.ippon.iroco2.domain.calculator.api.CloudServiceProviderServiceSvc;
+import fr.ippon.iroco2.domain.calculator.primary.CloudServiceProviderServiceSvc;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

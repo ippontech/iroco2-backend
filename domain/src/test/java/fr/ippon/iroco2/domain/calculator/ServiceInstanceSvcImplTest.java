@@ -17,7 +17,7 @@
  */
 package fr.ippon.iroco2.domain.calculator;
 
-import fr.ippon.iroco2.domain.calculator.spi.ServiceInstanceStorage;
+import fr.ippon.iroco2.domain.calculator.secondary.ServiceInstanceStorage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

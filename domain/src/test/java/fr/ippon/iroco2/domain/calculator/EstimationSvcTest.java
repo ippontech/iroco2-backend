@@ -17,15 +17,15 @@
  */
 package fr.ippon.iroco2.domain.calculator;
 
-import fr.ippon.iroco2.domain.calculator.api.InfrastructureSvc;
 import fr.ippon.iroco2.domain.calculator.exception.InfrastructureNotFound;
 import fr.ippon.iroco2.domain.calculator.model.CloudServiceProviderRegion;
 import fr.ippon.iroco2.domain.calculator.model.Component;
 import fr.ippon.iroco2.domain.calculator.model.Infrastructure;
-import fr.ippon.iroco2.domain.calculator.spi.CloudServiceProviderRegionStorage;
+import fr.ippon.iroco2.domain.calculator.primary.InfrastructureSvc;
+import fr.ippon.iroco2.domain.calculator.secondary.CloudServiceProviderRegionStorage;
 import fr.ippon.iroco2.domain.commons.exception.FunctionalException;
 import fr.ippon.iroco2.domain.commons.exception.NotFoundException;
-import fr.ippon.iroco2.domain.estimateur.CarbonEstimator;
+import fr.ippon.iroco2.domain.estimator.CarbonEstimator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

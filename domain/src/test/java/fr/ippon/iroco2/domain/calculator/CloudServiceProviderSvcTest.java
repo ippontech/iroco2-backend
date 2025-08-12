@@ -18,7 +18,7 @@
 package fr.ippon.iroco2.domain.calculator;
 
 import fr.ippon.iroco2.domain.calculator.model.CloudServiceProvider;
-import fr.ippon.iroco2.domain.calculator.spi.CloudServiceProviderStorage;
+import fr.ippon.iroco2.domain.calculator.secondary.CloudServiceProviderStorage;
 import fr.ippon.iroco2.domain.commons.exception.NotFoundException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

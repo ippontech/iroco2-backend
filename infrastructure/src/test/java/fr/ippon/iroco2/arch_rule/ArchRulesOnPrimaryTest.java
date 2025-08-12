@@ -11,10 +11,10 @@ public class ArchRulesOnPrimaryTest {
     public static final String PRIMARY_PACKAGE = "..primary..";
 
     @ArchTest
-    ArchRule infra_controller_should_call_domain_api_interfaces =
+    ArchRule infra_controller_should_call_domain_primary_interfaces =
             classes().that().haveNameMatching(".*Controller")
                     .and().doNotHaveSimpleName("ScannerJwtController") // used to get token
-                    .should().accessClassesThat().haveNameMatching("fr\\.ippon\\.iroco2\\.domain\\.[a-z]+\\.api\\..*");
+                    .should().accessClassesThat().haveNameMatching("fr\\.ippon\\.iroco2\\.domain\\.[a-z]+\\.primary\\..*");
 
     @ArchTest
     ArchRule controller_should_be_in_primary_package =

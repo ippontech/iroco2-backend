@@ -17,9 +17,9 @@
  */
 package fr.ippon.iroco2.domain.calculator;
 
-import fr.ippon.iroco2.domain.calculator.api.CloudServiceProviderSvc;
 import fr.ippon.iroco2.domain.calculator.model.CloudServiceProvider;
-import fr.ippon.iroco2.domain.calculator.spi.CloudServiceProviderStorage;
+import fr.ippon.iroco2.domain.calculator.primary.CloudServiceProviderSvc;
+import fr.ippon.iroco2.domain.calculator.secondary.CloudServiceProviderStorage;
 import fr.ippon.iroco2.domain.commons.DomainService;
 import fr.ippon.iroco2.domain.commons.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;

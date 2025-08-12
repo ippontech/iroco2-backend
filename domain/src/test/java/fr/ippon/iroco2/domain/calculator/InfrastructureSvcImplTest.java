@@ -19,9 +19,9 @@ package fr.ippon.iroco2.domain.calculator;
 
 import fr.ippon.iroco2.domain.calculator.exception.InfrastructureNotFound;
 import fr.ippon.iroco2.domain.calculator.model.Infrastructure;
-import fr.ippon.iroco2.domain.calculator.spi.InfrastructureStorage;
+import fr.ippon.iroco2.domain.calculator.secondary.InfrastructureStorage;
 import fr.ippon.iroco2.domain.commons.exception.UnauthorizedActionException;
-import fr.ippon.iroco2.domain.commons.spi.SessionProvider;
+import fr.ippon.iroco2.domain.commons.secondary.SessionProvider;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

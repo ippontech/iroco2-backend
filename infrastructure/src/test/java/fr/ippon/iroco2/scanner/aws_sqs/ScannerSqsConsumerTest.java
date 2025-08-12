@@ -25,7 +25,7 @@ import fr.ippon.iroco2.common.secondary.GlobalEnergyMixEntity;
 import fr.ippon.iroco2.common.secondary.GlobalEnergyMixRepository;
 import fr.ippon.iroco2.domain.calculator.model.emu.AWSDataCenter;
 import fr.ippon.iroco2.domain.scanner.model.Scan;
-import fr.ippon.iroco2.domain.scanner.spi.ScanStorage;
+import fr.ippon.iroco2.domain.scanner.secondary.ScanStorage;
 import fr.ippon.iroco2.scanner.secondary.ScanEntity;
 import fr.ippon.iroco2.scanner.secondary.ScannerRepository;
 import org.assertj.core.api.Assertions;

@@ -18,7 +18,7 @@
 package fr.ippon.iroco2.analyzer.aws_sqs;
 
 import fr.ippon.iroco2.common.aws.cur.ServiceCUR;
-import fr.ippon.iroco2.domain.analyzer.api.AnalyzerSvc;
+import fr.ippon.iroco2.domain.analyzer.primary.AnalyzerSvc;
 import fr.ippon.iroco2.domain.commons.exception.FunctionalException;
 import io.awspring.cloud.sqs.annotation.SqsListener;
 import io.awspring.cloud.sqs.annotation.SqsListenerAcknowledgementMode;

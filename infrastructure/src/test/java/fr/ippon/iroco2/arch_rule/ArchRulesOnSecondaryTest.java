@@ -13,10 +13,10 @@ public class ArchRulesOnSecondaryTest {
     public static final String SECONDARY_PACKAGE = "..secondary..";
 
     @ArchTest
-    ArchRule adapter_should_implement_domain_spi_interfaces =
+    ArchRule adapter_should_implement_domain_secondary_interfaces =
             classes().that().haveNameMatching(".*Adapter")
                     .and().doNotHaveSimpleName("EC2InstanceStorageAdapter") // TODO avoid exception
-                    .should().implement(fullNameMatching("fr\\.ippon\\.iroco2\\.domain\\.[a-z]+\\.spi\\..*"));
+                    .should().implement(fullNameMatching("fr\\.ippon\\.iroco2\\.domain\\.[a-z]+\\.secondary\\..*"));
 
     @ArchTest
     ArchRule adapter_should_be_annotated_with_repository =

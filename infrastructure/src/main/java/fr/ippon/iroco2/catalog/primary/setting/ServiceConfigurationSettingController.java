@@ -18,7 +18,7 @@
 package fr.ippon.iroco2.catalog.primary.setting;
 
 import fr.ippon.iroco2.common.primary.security.IsMember;
-import fr.ippon.iroco2.domain.calculator.api.ServiceConfigurationSettingSvc;
+import fr.ippon.iroco2.domain.calculator.primary.ServiceConfigurationSettingSvc;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

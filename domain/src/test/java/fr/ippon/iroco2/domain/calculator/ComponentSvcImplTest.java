@@ -17,15 +17,15 @@
  */
 package fr.ippon.iroco2.domain.calculator;
 
-import fr.ippon.iroco2.domain.calculator.api.InfrastructureSvc;
 import fr.ippon.iroco2.domain.calculator.model.CloudServiceProviderService;
 import fr.ippon.iroco2.domain.calculator.model.Component;
 import fr.ippon.iroco2.domain.calculator.model.ConfiguredSetting;
 import fr.ippon.iroco2.domain.calculator.model.Infrastructure;
-import fr.ippon.iroco2.domain.calculator.spi.CloudServiceProviderRegionStorage;
-import fr.ippon.iroco2.domain.calculator.spi.CloudServiceProviderServiceStorage;
-import fr.ippon.iroco2.domain.calculator.spi.ComponentStorage;
-import fr.ippon.iroco2.domain.calculator.spi.ConfigurationSettingStorage;
+import fr.ippon.iroco2.domain.calculator.primary.InfrastructureSvc;
+import fr.ippon.iroco2.domain.calculator.secondary.CloudServiceProviderRegionStorage;
+import fr.ippon.iroco2.domain.calculator.secondary.CloudServiceProviderServiceStorage;
+import fr.ippon.iroco2.domain.calculator.secondary.ComponentStorage;
+import fr.ippon.iroco2.domain.calculator.secondary.ConfigurationSettingStorage;
 import fr.ippon.iroco2.domain.commons.exception.NotFoundException;
 import fr.ippon.iroco2.domain.commons.svc.DateProvider;
 import org.junit.jupiter.api.Test;

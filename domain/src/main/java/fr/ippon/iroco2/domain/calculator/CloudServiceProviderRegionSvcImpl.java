@@ -17,9 +17,9 @@
  */
 package fr.ippon.iroco2.domain.calculator;
 
-import fr.ippon.iroco2.domain.calculator.api.CloudServiceProviderRegionSvc;
 import fr.ippon.iroco2.domain.calculator.model.CloudServiceProviderRegion;
-import fr.ippon.iroco2.domain.calculator.spi.CloudServiceProviderRegionStorage;
+import fr.ippon.iroco2.domain.calculator.primary.CloudServiceProviderRegionSvc;
+import fr.ippon.iroco2.domain.calculator.secondary.CloudServiceProviderRegionStorage;
 import fr.ippon.iroco2.domain.commons.DomainService;
 import lombok.RequiredArgsConstructor;
 

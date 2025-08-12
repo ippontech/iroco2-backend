@@ -23,7 +23,7 @@ import fr.ippon.iroco2.catalog.secondary.region.CloudServiceProviderRegionReposi
 import fr.ippon.iroco2.catalog.secondary.service.CloudServiceProviderServiceRepository;
 import fr.ippon.iroco2.domain.calculator.model.Component;
 import fr.ippon.iroco2.domain.calculator.model.ConfiguredSetting;
-import fr.ippon.iroco2.domain.calculator.spi.ComponentStorage;
+import fr.ippon.iroco2.domain.calculator.secondary.ComponentStorage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

@@ -17,8 +17,8 @@
  */
 package fr.ippon.iroco2.common.secondary;
 
-import fr.ippon.iroco2.domain.estimateur.aws.EC2Instance;
-import fr.ippon.iroco2.domain.estimateur.aws.EC2InstanceStorage;
+import fr.ippon.iroco2.domain.estimator.aws.EC2Instance;
+import fr.ippon.iroco2.domain.estimator.aws.EC2InstanceStorage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

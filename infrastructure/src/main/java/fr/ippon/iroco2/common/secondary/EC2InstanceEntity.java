@@ -17,8 +17,8 @@
  */
 package fr.ippon.iroco2.common.secondary;
 
-import fr.ippon.iroco2.domain.estimateur.aws.EC2Instance;
-import fr.ippon.iroco2.domain.estimateur.model.cpu.CPUType;
+import fr.ippon.iroco2.domain.estimator.aws.EC2Instance;
+import fr.ippon.iroco2.domain.estimator.model.cpu.CPUType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

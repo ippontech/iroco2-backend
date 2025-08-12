@@ -1,6 +1,6 @@
 package fr.ippon.iroco2.catalog.secondary;
 
-import fr.ippon.iroco2.domain.calculator.spi.ConfigurationSettingStorage;
+import fr.ippon.iroco2.domain.calculator.secondary.ConfigurationSettingStorage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

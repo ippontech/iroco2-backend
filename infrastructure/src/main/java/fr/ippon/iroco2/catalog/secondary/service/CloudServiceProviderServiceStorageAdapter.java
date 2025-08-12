@@ -18,7 +18,7 @@
 package fr.ippon.iroco2.catalog.secondary.service;
 
 import fr.ippon.iroco2.domain.calculator.model.CloudServiceProviderService;
-import fr.ippon.iroco2.domain.calculator.spi.CloudServiceProviderServiceStorage;
+import fr.ippon.iroco2.domain.calculator.secondary.CloudServiceProviderServiceStorage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

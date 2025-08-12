@@ -20,7 +20,7 @@ package fr.ippon.iroco2.scanner.secondary;
 import fr.ippon.iroco2.common.secondary.EstimatedPayloadEntity;
 import fr.ippon.iroco2.domain.commons.model.EstimatedPayload;
 import fr.ippon.iroco2.domain.scanner.model.Scan;
-import fr.ippon.iroco2.domain.scanner.spi.ScanStorage;
+import fr.ippon.iroco2.domain.scanner.secondary.ScanStorage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

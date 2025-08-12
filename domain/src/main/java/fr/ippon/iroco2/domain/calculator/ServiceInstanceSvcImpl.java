@@ -1,7 +1,7 @@
 package fr.ippon.iroco2.domain.calculator;
 
-import fr.ippon.iroco2.domain.calculator.api.ServiceInstanceSvc;
-import fr.ippon.iroco2.domain.calculator.spi.ServiceInstanceStorage;
+import fr.ippon.iroco2.domain.calculator.primary.ServiceInstanceSvc;
+import fr.ippon.iroco2.domain.calculator.secondary.ServiceInstanceStorage;
 import fr.ippon.iroco2.domain.commons.DomainService;
 
 import java.util.List;

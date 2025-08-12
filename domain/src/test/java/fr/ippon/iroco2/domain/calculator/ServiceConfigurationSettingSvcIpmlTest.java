@@ -18,7 +18,7 @@
 package fr.ippon.iroco2.domain.calculator;
 
 import fr.ippon.iroco2.domain.calculator.model.ServiceConfigurationSetting;
-import fr.ippon.iroco2.domain.calculator.spi.ServiceConfigurationSettingStorage;
+import fr.ippon.iroco2.domain.calculator.secondary.ServiceConfigurationSettingStorage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

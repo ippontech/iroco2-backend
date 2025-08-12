@@ -18,11 +18,11 @@
 package fr.ippon.iroco2.calculator.infrastructure.primary;
 
 import fr.ippon.iroco2.common.primary.security.IsMember;
-import fr.ippon.iroco2.domain.calculator.api.EstimationSvc;
-import fr.ippon.iroco2.domain.calculator.api.InfrastructureSvc;
 import fr.ippon.iroco2.domain.calculator.model.Infrastructure;
+import fr.ippon.iroco2.domain.calculator.primary.EstimationSvc;
+import fr.ippon.iroco2.domain.calculator.primary.InfrastructureSvc;
 import fr.ippon.iroco2.domain.commons.exception.FunctionalException;
-import fr.ippon.iroco2.domain.commons.spi.SessionProvider;
+import fr.ippon.iroco2.domain.commons.secondary.SessionProvider;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

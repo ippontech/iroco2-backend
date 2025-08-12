@@ -1,7 +1,7 @@
 package fr.ippon.iroco2.calculator.infrastructure.component.secondary;
 
 import fr.ippon.iroco2.common.secondary.EC2InstanceEntity;
-import fr.ippon.iroco2.domain.calculator.spi.ServiceInstanceStorage;
+import fr.ippon.iroco2.domain.calculator.secondary.ServiceInstanceStorage;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

@@ -18,8 +18,8 @@
 package fr.ippon.iroco2.scanner.primary;
 
 import fr.ippon.iroco2.common.primary.security.IsMember;
-import fr.ippon.iroco2.domain.scanner.api.ScannerSvc;
 import fr.ippon.iroco2.domain.scanner.exception.ScanNotFoundException;
+import fr.ippon.iroco2.domain.scanner.primary.ScannerSvc;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -18,7 +18,7 @@
 package fr.ippon.iroco2.catalog.secondary.setting;
 
 import fr.ippon.iroco2.domain.calculator.model.ServiceConfigurationSetting;
-import fr.ippon.iroco2.domain.calculator.spi.ServiceConfigurationSettingStorage;
+import fr.ippon.iroco2.domain.calculator.secondary.ServiceConfigurationSettingStorage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

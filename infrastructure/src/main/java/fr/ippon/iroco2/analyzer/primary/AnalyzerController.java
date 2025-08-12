@@ -19,8 +19,8 @@ package fr.ippon.iroco2.analyzer.primary;
 
 import fr.ippon.iroco2.analyzer.aws_s3.BucketStorage;
 import fr.ippon.iroco2.common.primary.security.IsMember;
-import fr.ippon.iroco2.domain.analyzer.api.AnalyzerSvc;
 import fr.ippon.iroco2.domain.analyzer.exception.AnalysisNotFoundException;
+import fr.ippon.iroco2.domain.analyzer.primary.AnalyzerSvc;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

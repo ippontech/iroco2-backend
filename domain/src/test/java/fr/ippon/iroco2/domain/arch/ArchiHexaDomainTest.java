@@ -28,11 +28,11 @@ import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
 public class ArchiHexaDomainTest {
     @ArchTest
     ArchRule classes_spi_package_should_have_interfaces_only =
-            classes().that().resideInAPackage("..spi").should().beInterfaces();
+            classes().that().resideInAPackage("..secondary").should().beInterfaces();
     @ArchTest
     ArchRule classes_api_package_should_have_interfaces_only =
-            classes().that().resideInAPackage("..api").should().beInterfaces();
+            classes().that().resideInAPackage("..primary").should().beInterfaces();
     @ArchTest
     ArchRule domain_should_not_have_adapter =
-            noClasses().should().haveNameMatching(".*Adapteu?r");
+            noClasses().should().haveNameMatching(".*Adapter");
 }

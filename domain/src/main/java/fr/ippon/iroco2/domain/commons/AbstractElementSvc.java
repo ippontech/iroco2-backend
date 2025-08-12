@@ -22,8 +22,8 @@ import fr.ippon.iroco2.domain.commons.exception.NotFoundException;
 import fr.ippon.iroco2.domain.commons.model.AReport;
 import fr.ippon.iroco2.domain.commons.model.EstimatedPayload;
 import fr.ippon.iroco2.domain.commons.model.Payload;
-import fr.ippon.iroco2.domain.commons.spi.ReportStorage;
-import fr.ippon.iroco2.domain.estimateur.CarbonEstimator;
+import fr.ippon.iroco2.domain.commons.secondary.ReportStorage;
+import fr.ippon.iroco2.domain.estimator.CarbonEstimator;
 
 import java.util.UUID;
 

@@ -17,13 +17,13 @@
  */
 package fr.ippon.iroco2.domain.calculator;
 
-import fr.ippon.iroco2.domain.calculator.api.InfrastructureSvc;
 import fr.ippon.iroco2.domain.calculator.exception.InfrastructureNotFound;
 import fr.ippon.iroco2.domain.calculator.model.Infrastructure;
-import fr.ippon.iroco2.domain.calculator.spi.InfrastructureStorage;
+import fr.ippon.iroco2.domain.calculator.primary.InfrastructureSvc;
+import fr.ippon.iroco2.domain.calculator.secondary.InfrastructureStorage;
 import fr.ippon.iroco2.domain.commons.DomainService;
 import fr.ippon.iroco2.domain.commons.exception.UnauthorizedActionException;
-import fr.ippon.iroco2.domain.commons.spi.SessionProvider;
+import fr.ippon.iroco2.domain.commons.secondary.SessionProvider;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;

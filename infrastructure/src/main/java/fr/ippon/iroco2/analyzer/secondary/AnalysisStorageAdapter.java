@@ -19,7 +19,7 @@ package fr.ippon.iroco2.analyzer.secondary;
 
 import fr.ippon.iroco2.common.secondary.EstimatedPayloadEntity;
 import fr.ippon.iroco2.domain.analyzer.model.Analysis;
-import fr.ippon.iroco2.domain.analyzer.spi.AnalysisStorage;
+import fr.ippon.iroco2.domain.analyzer.secondary.AnalysisStorage;
 import fr.ippon.iroco2.domain.commons.model.EstimatedPayload;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

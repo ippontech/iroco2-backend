@@ -17,18 +17,18 @@
  */
 package fr.ippon.iroco2.domain.analyzer;
 
-import fr.ippon.iroco2.domain.analyzer.api.AnalyzerSvc;
 import fr.ippon.iroco2.domain.analyzer.exception.AnalysisNotFoundException;
 import fr.ippon.iroco2.domain.analyzer.model.Analysis;
-import fr.ippon.iroco2.domain.analyzer.spi.AnalysisStorage;
+import fr.ippon.iroco2.domain.analyzer.primary.AnalyzerSvc;
+import fr.ippon.iroco2.domain.analyzer.secondary.AnalysisStorage;
 import fr.ippon.iroco2.domain.commons.AbstractElementSvc;
 import fr.ippon.iroco2.domain.commons.DomainService;
 import fr.ippon.iroco2.domain.commons.exception.NotFoundException;
 import fr.ippon.iroco2.domain.commons.exception.UnauthorizedActionException;
-import fr.ippon.iroco2.domain.commons.spi.ReportStorage;
-import fr.ippon.iroco2.domain.commons.spi.SessionProvider;
+import fr.ippon.iroco2.domain.commons.secondary.ReportStorage;
+import fr.ippon.iroco2.domain.commons.secondary.SessionProvider;
 import fr.ippon.iroco2.domain.commons.svc.DateProvider;
-import fr.ippon.iroco2.domain.estimateur.CarbonEstimator;
+import fr.ippon.iroco2.domain.estimator.CarbonEstimator;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
