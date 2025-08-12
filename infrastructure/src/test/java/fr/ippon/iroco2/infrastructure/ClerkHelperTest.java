@@ -32,6 +32,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.test.context.junit.jupiter.EnabledIf;
 
 import java.security.spec.InvalidKeySpecException;
 import java.time.Instant;
@@ -40,12 +41,12 @@ import java.util.stream.Stream;
 
 @SpringBootTest
 @Import(TestAwsConfig.class)
+@EnabledIf(expression = "#{environment['clerk.secret.key'] != ''}", loadContext = true)
 class ClerkHelperTest {
     @Autowired
     ClerkHelper clerkHelper;
     @Autowired
     TestSecurityUtils testSecurityUtils;
-
     @Value("${clerk.public.key}")
     private String clerkPublicKey;
 
