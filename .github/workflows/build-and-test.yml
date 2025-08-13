@@ -26,5 +26,4 @@ jobs:
 
     - name: Build with Maven
       run: |
-        # mvn -B verify --file pom.xml # this line needs to be removed when tests are fixed
-        mvn -B verify --file pom.xml -DskipTests
+        mvn -B verify --file pom.xml
