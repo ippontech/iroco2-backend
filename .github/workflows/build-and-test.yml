@@ -28,10 +28,3 @@ jobs:
       run: |
         # mvn -B verify --file pom.xml # this line needs to be removed when tests are fixed
         mvn -B verify --file pom.xml -DskipTests
-
-    - name: Archive build results
-      uses: actions/upload-artifact@v4
-      with:
-        name: build-results
-        path: |
-          infrastructure/target/infrastructure-0.0.1-SNAPSHOT.jar
