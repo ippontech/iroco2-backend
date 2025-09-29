@@ -155,6 +155,10 @@ Distributed under the Apache 2.0 License. See [LICENSE](./LICENSE) for more info
 
 ---
 
+## ✅ Testing standards
+
+A frame of standards have been designed and documented in main IroCO2 repository on [003_tests_standards.md](https://github.com/ippontech/iroco2/blob/docs/100-test-coverage/contribute/adr/003_tests_standards.md).
+
 ## 📄 Documentation
 See [docs/](./docs) for technical documentation.
 
