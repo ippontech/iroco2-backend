@@ -46,6 +46,7 @@ jobs:
           -Dsonar.organization=${{ vars.SONAR_ORG }}
           -Dsonar.projectKey=${{ vars.SONAR_PROJECT_KEY }}
           -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+          -Dsonar.qualitygate.wait=false
 
       - name: SonarCloud analyze
         if: github.event_name == 'pull_request'
