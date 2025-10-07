@@ -27,7 +27,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <sonar.qualitygate.wait>true</sonar.qualitygate.wait>
-        <sonar.projectKey>iroco2_irocalc-backend_AY1j2N8GK1Fu9YZs3MKO</sonar.projectKey>
         <sonar.java.source>${java.version}</sonar.java.source>
     </properties>
 
