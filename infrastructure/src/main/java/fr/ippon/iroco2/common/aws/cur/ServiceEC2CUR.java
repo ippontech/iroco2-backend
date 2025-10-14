@@ -21,7 +21,7 @@ import fr.ippon.iroco2.domain.commons.model.PayloadConfiguration;
 import lombok.Getter;
 
 import java.time.Duration;
-import java.util.HashMap;
+import java.util.Map;
 
 @Getter
 public class ServiceEC2CUR extends ServiceCUR {
@@ -34,9 +34,7 @@ public class ServiceEC2CUR extends ServiceCUR {
     }
 
     @Override
-    protected HashMap<PayloadConfiguration, String> toConfiguredValuesDomain() {
-        HashMap<PayloadConfiguration, String> config = new HashMap<>();
-        config.put(PayloadConfiguration.INSTANCE_TYPE, ec2Type);
-        return config;
+    protected Map<PayloadConfiguration, String> toConfiguredValuesDomain() {
+        return Map.of(PayloadConfiguration.INSTANCE_TYPE, ec2Type);
     }
 }

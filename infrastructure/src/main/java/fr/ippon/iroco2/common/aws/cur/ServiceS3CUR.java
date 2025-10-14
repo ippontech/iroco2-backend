@@ -22,7 +22,7 @@ import lombok.Getter;
 
 import java.math.BigDecimal;
 import java.time.Duration;
-import java.util.HashMap;
+import java.util.Map;
 
 @Getter
 public class ServiceS3CUR extends ServiceCUR {
@@ -35,9 +35,7 @@ public class ServiceS3CUR extends ServiceCUR {
     }
 
     @Override
-    protected HashMap<PayloadConfiguration, String> toConfiguredValuesDomain() {
-        HashMap<PayloadConfiguration, String> config = new HashMap<>();
-        config.put(PayloadConfiguration.S3_STORAGE, storageInMo.toString());
-        return config;
+    protected Map<PayloadConfiguration, String> toConfiguredValuesDomain() {
+        return Map.of(PayloadConfiguration.S3_STORAGE, storageInMo.toString());
     }
 }

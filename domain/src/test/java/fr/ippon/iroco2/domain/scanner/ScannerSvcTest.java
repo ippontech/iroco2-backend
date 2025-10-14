@@ -38,7 +38,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -73,7 +73,7 @@ class ScannerSvcTest {
     private ScannerSvcImpl scannerSvc;
 
     private static Payload createPayload(UUID scan, int expectedPayloads) {
-        return new Payload(scan, "countryCode", "name", Duration.ZERO, expectedPayloads, new HashMap<>());
+        return new Payload(scan, "countryCode", "name", Duration.ZERO, expectedPayloads, Map.of());
     }
 
     private static Scan createSavedScan(String currentUser) {

@@ -39,8 +39,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -72,7 +72,7 @@ class AnalyzerSvcTest {
     private AnalyzerSvcImpl analyzerSvc;
 
     private static Payload createPayload(UUID analysisId, int expectedPayloads) {
-        return new Payload(analysisId, "countryCode", "name", Duration.ZERO, expectedPayloads, new HashMap<>());
+        return new Payload(analysisId, "countryCode", "name", Duration.ZERO, expectedPayloads, Map.of());
     }
 
     private static Analysis createSavedAnalysis(String currentUser) {
