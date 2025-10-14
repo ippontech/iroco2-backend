@@ -18,6 +18,7 @@
 package fr.ippon.iroco2.access.jwt;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
