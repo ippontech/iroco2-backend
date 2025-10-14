@@ -29,11 +29,6 @@ public record Payload(
         int expectedPayloads,
         Map<PayloadConfiguration, String> configuredValues) {
     public String getValue(PayloadConfiguration key) {
-        return configuredValues == null ? null :
-                configuredValues.entrySet().stream()
-                        .filter(cv -> key == cv.getKey())
-                        .findFirst()
-                        .map(Map.Entry::getValue)
-                        .orElse(null);
+        return configuredValues == null ? null : configuredValues.get(key);
     }
 }
