@@ -47,7 +47,7 @@ public class SecurityConfig {
 
         log.debug("authentication activated? {}", authActivate);
 
-        return http.csrf(AbstractHttpConfigurer::disable)
+        return http
                 .addFilterBefore(scannerAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(authorize ->
