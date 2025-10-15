@@ -26,7 +26,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.time.Duration;
-import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 @Getter
@@ -46,5 +46,5 @@ public abstract class ServiceCUR {
         return new Payload(UUID.fromString(correlationId), serviceTypeCUR.name(), AWSDataCenter.fromValue(awsDataCenter).getAssociatedCountryIsoCode(), durationOfServiceOperation, Math.toIntExact(numberOfMessageExpected), toConfiguredValuesDomain());
     }
 
-    protected abstract HashMap<PayloadConfiguration, String> toConfiguredValuesDomain();
+    protected abstract Map<PayloadConfiguration, String> toConfiguredValuesDomain();
 }
