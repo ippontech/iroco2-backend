@@ -17,11 +17,15 @@
  */
 package fr.ippon.iroco2.domain.calculator.model;
 
+import fr.ippon.iroco2.domain.calculator.model.emu.SettingName;
 import org.junit.jupiter.api.Test;
 
+import java.time.Duration;
 import java.util.List;
 
 import static fr.ippon.iroco2.domain.calculator.model.emu.SettingName.INSTANCE_NUMBER;
+import static fr.ippon.iroco2.domain.estimator.TimeConstant.AVERAGE_DAYS_PER_MONTH;
+import static fr.ippon.iroco2.domain.estimator.TimeConstant.MS_IN_ONE_MONTH;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
@@ -77,5 +81,30 @@ class ComponentTest {
         var result = component.getValue(INSTANCE_NUMBER);
         //then
         assertThat(result).isEqualTo("666");
+    }
+
+    @Test
+    void testComputeEstimatedMonthlyUptime_WithFilteredValues_ProductCalculation() {
+        // Given
+
+        // 0 = ignored, 2, 3, 5, 7 = kept
+        List<ConfiguredSetting> configurationValues = List.of(
+                new ConfiguredSetting(null, SettingName.PROCESSOR_ARCHITECTURE, "0"),
+                new ConfiguredSetting(null, SettingName.MEMORY_IN_MEGA_BYTE, "0"),
+                new ConfiguredSetting(null, SettingName.INSTANCE_NUMBER, "2"),
+                new ConfiguredSetting(null, SettingName.VOLUME_NUMBER, "3"),
+                new ConfiguredSetting(null, SettingName.MONTHLY_INVOCATION_COUNT, "5"),
+                new ConfiguredSetting(null, SettingName.DAYS_ON_PER_MONTH, "7")
+        );
+        Component component = Component.load(
+                null, null, "Test", null, null, null, configurationValues
+        );
+
+        // When
+        Duration uptime = component.computeEstimatedMonthlyUptime();
+
+        // Then
+        Duration expectedUptime = Duration.ofMillis((long) (210 * MS_IN_ONE_MONTH / AVERAGE_DAYS_PER_MONTH)); // 2 * 3 * 5 * 7 = 210
+        assertThat(uptime).isEqualTo(expectedUptime);
     }
 }

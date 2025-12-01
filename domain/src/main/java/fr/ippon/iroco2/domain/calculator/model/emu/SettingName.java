@@ -17,7 +17,10 @@
  */
 package fr.ippon.iroco2.domain.calculator.model.emu;
 
+import java.util.Set;
+
 public enum SettingName {
+
     INSTANCE_NUMBER,
     INSTANCE_TYPE,
     STORAGE_IN_MEGA_BYTE,
@@ -28,5 +31,11 @@ public enum SettingName {
     MEMORY_IN_MEGA_BYTE,
     DAILY_USAGE_COUNT,
     DAYS_ON_PER_MONTH,
-    VOLUME_NUMBER
+    VOLUME_NUMBER;
+
+    private static final Set<SettingName> UPTIME_PARAMETERS = Set.of(INSTANCE_NUMBER, VOLUME_NUMBER, MONTHLY_INVOCATION_COUNT, DAYS_ON_PER_MONTH, DAILY_USAGE_COUNT, AVERAGE_EXEC_TIME_IN_MS, DAILY_RUNNING_TIME_IN_MS);
+
+    public boolean isUptimeParameter() {
+        return UPTIME_PARAMETERS.contains(this);
+    }
 }
