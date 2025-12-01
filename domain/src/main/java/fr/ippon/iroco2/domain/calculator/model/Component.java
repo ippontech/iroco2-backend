@@ -23,11 +23,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.OptionalDouble;
 import java.util.UUID;
 
 import static fr.ippon.iroco2.domain.calculator.model.emu.SettingName.MEMORY_IN_MEGA_BYTE;
+import static fr.ippon.iroco2.domain.estimator.TimeConstant.MS_IN_ONE_MONTH;
 import static java.util.Optional.ofNullable;
 
 @Getter
@@ -50,6 +53,21 @@ public class Component {
 
     public static Component load(UUID id, UUID infrastructureID, String name, LocalDateTime lastModificationDate, UUID regionID, CloudServiceProviderService service, List<ConfiguredSetting> values) {
         return new Component(id, infrastructureID, name, lastModificationDate, regionID, service, values);
+    }
+
+    /**
+     * Calculates the estimated monthly uptime for a component based on its configuration values.
+     * If no valid configuration values are set, the default uptime ratio is considered as 1.
+     *
+     * @return the computed monthly uptime as a {@link Duration}, representing the duration of uptime for one month.
+     */
+    public Duration computeEstimatedMonthlyUptime() {
+        double averageUptimeRatio = configurationValues.stream()
+                .filter(configurationValue -> configurationValue.configurationSettingName().isUptimeParameter())
+                .map(ConfiguredSetting::computeAverageUptimeRatio)
+                .flatMapToDouble(OptionalDouble::stream)
+                .reduce(1., (a, b) -> a * b); // standard product. 1 if no valid configuration is set
+        return Duration.ofMillis((long) (averageUptimeRatio * MS_IN_ONE_MONTH));
     }
 
     public double getMemoryInMegaByte() {

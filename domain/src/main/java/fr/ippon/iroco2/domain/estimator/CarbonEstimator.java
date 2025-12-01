@@ -18,7 +18,6 @@
 package fr.ippon.iroco2.domain.estimator;
 
 import fr.ippon.iroco2.domain.calculator.model.Component;
-import fr.ippon.iroco2.domain.calculator.model.ConfiguredSetting;
 import fr.ippon.iroco2.domain.calculator.model.emu.SettingName;
 import fr.ippon.iroco2.domain.commons.DomainService;
 import fr.ippon.iroco2.domain.commons.exception.FunctionalException;
@@ -46,12 +45,8 @@ import static fr.ippon.iroco2.domain.calculator.model.emu.SettingName.PROCESSOR_
 import static fr.ippon.iroco2.domain.calculator.model.emu.SettingName.STORAGE_IN_MEGA_BYTE;
 import static fr.ippon.iroco2.domain.commons.model.PayloadConfiguration.INSTANCE_TYPE;
 import static fr.ippon.iroco2.domain.commons.model.PayloadConfiguration.S3_STORAGE;
-import static fr.ippon.iroco2.domain.estimator.TimeConstant.AVERAGE_DAYS_PER_MONTH;
-import static fr.ippon.iroco2.domain.estimator.TimeConstant.MS_IN_ONE_DAY;
-import static fr.ippon.iroco2.domain.estimator.TimeConstant.MS_IN_ONE_MONTH;
 import static fr.ippon.iroco2.domain.estimator.aws.EC2Instance.TDP_TO_POWER_CONSUMPTION_RATIO;
 import static fr.ippon.iroco2.domain.estimator.model.MemoryConfig.ZERO_MB;
-import static java.lang.Integer.parseInt;
 import static java.math.RoundingMode.UP;
 
 @DomainService
@@ -60,27 +55,6 @@ public class CarbonEstimator {
     private static final BigDecimal NUMBER_OF_MEMORY_FOR_ONE_LAMBDA_VCPU_IN_MO = BigDecimal.valueOf(1769);
     private final GlobalEnergyMixStorage globalEnergyMixStorage;
     private final EC2InstanceStorage ec2InstanceStorage;
-
-    private static Duration computeDuration(Component component) {
-        double percentageUptime = 1;
-        for (ConfiguredSetting configurationValue : component.getConfigurationValues()) {
-            switch (configurationValue.configurationSettingName()) {
-                case INSTANCE_NUMBER, VOLUME_NUMBER, MONTHLY_INVOCATION_COUNT ->
-                        percentageUptime *= parseInt(configurationValue.value());
-                case DAYS_ON_PER_MONTH ->
-                        percentageUptime *= parseInt(configurationValue.value()) / AVERAGE_DAYS_PER_MONTH;
-                case DAILY_USAGE_COUNT ->
-                        percentageUptime *= parseInt(configurationValue.value()) * AVERAGE_DAYS_PER_MONTH;
-                case AVERAGE_EXEC_TIME_IN_MS ->
-                        percentageUptime *= parseInt(configurationValue.value()) / MS_IN_ONE_MONTH;
-                case DAILY_RUNNING_TIME_IN_MS ->
-                        percentageUptime *= (double) parseInt(configurationValue.value()) / MS_IN_ONE_DAY;
-                default -> { // not an UpTime parameter
-                }
-            }
-        }
-        return Duration.ofMillis((long) (percentageUptime * MS_IN_ONE_MONTH));
-    }
 
     private static MemoryConfig findMemoryConfig(Component component, SettingName settingName) {
         return Optional.ofNullable(component.getValue(settingName))
@@ -124,8 +98,8 @@ public class CarbonEstimator {
         CPUConfig cpu = findCPU(component);
         MemoryConfig ram = findMemoryConfig(component, MEMORY_IN_MEGA_BYTE);
         MemoryConfig disk = findMemoryConfig(component, STORAGE_IN_MEGA_BYTE);
-        Duration duration = computeDuration(component);
-        var estimatableServer = getEstimatableServer(component.getValue(SettingName.INSTANCE_TYPE), disk, duration, cpu, ram);
+        Duration monthlyUptime = component.computeEstimatedMonthlyUptime();
+        var estimatableServer = getEstimatableServer(component.getValue(SettingName.INSTANCE_TYPE), disk, monthlyUptime, cpu, ram);
         return estimateServer(countryIsoCode, estimatableServer);
     }
 

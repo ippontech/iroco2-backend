@@ -19,10 +19,40 @@ package fr.ippon.iroco2.domain.calculator.model;
 
 import fr.ippon.iroco2.domain.calculator.model.emu.SettingName;
 
+import java.util.OptionalDouble;
 import java.util.UUID;
+
+import static fr.ippon.iroco2.domain.estimator.TimeConstant.AVERAGE_DAYS_PER_MONTH;
+import static fr.ippon.iroco2.domain.estimator.TimeConstant.MS_IN_ONE_DAY;
+import static fr.ippon.iroco2.domain.estimator.TimeConstant.MS_IN_ONE_MONTH;
+import static java.lang.Double.parseDouble;
 
 public record ConfiguredSetting(
         UUID configurationSettingId,
         SettingName configurationSettingName,
         String value) {
+
+    /**
+     * Computes the average uptime ratio for this setting according to its type and value.
+     *
+     * @return an optional containing the uptime ratio corresponding to this setting.
+     * Empty if the setting is irrelevant to the uptime ration
+     */
+    public OptionalDouble computeAverageUptimeRatio() {
+        if (!configurationSettingName.isUptimeParameter()) {
+            return OptionalDouble.empty();
+        }
+
+        final double value = parseDouble(this.value);
+        final double averageUptimeRatio = switch (configurationSettingName) {
+            case INSTANCE_NUMBER, VOLUME_NUMBER, MONTHLY_INVOCATION_COUNT -> value;
+            case DAYS_ON_PER_MONTH -> value / AVERAGE_DAYS_PER_MONTH;
+            case DAILY_USAGE_COUNT -> value * AVERAGE_DAYS_PER_MONTH;
+            case AVERAGE_EXEC_TIME_IN_MS -> value / MS_IN_ONE_MONTH;
+            case DAILY_RUNNING_TIME_IN_MS -> value / MS_IN_ONE_DAY;
+            default ->
+                    throw new IllegalStateException("Unexpected configuration setting: '%s'".formatted(configurationSettingName));
+        };
+        return OptionalDouble.of(averageUptimeRatio);
+    }
 }
