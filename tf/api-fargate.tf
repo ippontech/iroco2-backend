@@ -60,4 +60,9 @@ module "api-fargate" {
       key = "password"
     }
   }
+
+  cluster_name            = var.cluster_name
+  vpc_name                = var.vpc_name
+  alb_name                = var.alb_name
+  alb_security_group_name = var.alb_security_group_name
 }

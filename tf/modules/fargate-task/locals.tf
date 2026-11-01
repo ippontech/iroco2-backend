@@ -17,7 +17,7 @@
 locals {
   app_name = var.environment
 
-  app_base_path = coalesce(var.override_base_path, var.project_name)
+  app_base_path            = coalesce(var.override_base_path, var.project_name)
   healthcheck_path         = "/actuator/health"
   is_prod                  = var.deploy_account == "prod"
   is_ephemeral_environment = var.environment != "main"

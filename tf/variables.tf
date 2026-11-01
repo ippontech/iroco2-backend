@@ -37,3 +37,33 @@ variable "route53_zone" {
     # TODO: Add route53 zones ex. ppr = "subdomain.domain.fr"
   }
 }
+
+# EXISTING AWS RESOURCES, looked up by name for each deploy account
+
+variable "cluster_name" {
+  type = object({
+    ppr  = string
+    prod = string
+  })
+}
+
+variable "vpc_name" {
+  type = object({
+    ppr  = string
+    prod = string
+  })
+}
+
+variable "alb_name" {
+  type = object({
+    ppr  = string
+    prod = string
+  })
+}
+
+variable "alb_security_group_name" {
+  type = object({
+    ppr  = string
+    prod = string
+  })
+}

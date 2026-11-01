@@ -65,37 +65,20 @@ variable "failover_mailing_list" {
 
 #### ECS ####
 # Required
-
-# Not Required
 variable "cluster_name" {
   type = object({
     ppr  = string
     prod = string
   })
-
-  default = {
-    # TODO: Add cluster names
-  }
 }
 
 #### NETWORK ####
 # Required
-
-# Not required
 variable "vpc_name" {
   type = object({
     ppr  = string
     prod = string
   })
-
-  default = {
-    # TODO: Add vpc names
-  }
-}
-
-variable "private_subnet_name_regex" {
-  type    = string
-  default = "*-private-eu-west-3a*"
 }
 
 variable "alb_name" {
@@ -103,10 +86,6 @@ variable "alb_name" {
     ppr  = string
     prod = string
   })
-
-  default = {
-    # TODO: Add alb names
-  }
 }
 
 variable "alb_security_group_name" {
@@ -114,10 +93,12 @@ variable "alb_security_group_name" {
     ppr  = string
     prod = string
   })
+}
 
-  default = {
-    # TODO: Add alb security group names
-  }
+# Not required
+variable "private_subnet_name_regex" {
+  type    = string
+  default = "*-private-eu-west-3a*"
 }
 
 variable "route53_zone" {
