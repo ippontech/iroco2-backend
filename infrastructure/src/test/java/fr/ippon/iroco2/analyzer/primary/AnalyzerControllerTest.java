@@ -69,7 +69,7 @@ class AnalyzerControllerTest {
 
     @Container
     private static final LocalStackContainer localStackContainer = new LocalStackContainer(
-            DockerImageName.parse("localstack/localstack")
+            DockerImageName.parse("localstack/localstack:4.14.0")
     ).withServices(LocalStackContainer.Service.S3);
 
     @Autowired

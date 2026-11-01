@@ -20,7 +20,7 @@ import static org.testcontainers.containers.localstack.LocalStackContainer.Servi
 public abstract class TestLocalStackWithSQS {
     @Container
     private static final LocalStackContainer LOCALSTACK =
-            new LocalStackContainer(DockerImageName.parse("localstack/localstack"))
+            new LocalStackContainer(DockerImageName.parse("localstack/localstack:4.14.0"))
                     .withServices(SQS);
 
     @Autowired

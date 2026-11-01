@@ -13,7 +13,7 @@
 
     <properties>
         <spring-cloud.version>3.2.0-M1</spring-cloud.version>
-        <testcontainers.version>1.19.7</testcontainers.version>
+        <testcontainers.version>1.21.4</testcontainers.version>
         <flyway.version>10.10.0</flyway.version>
         <cucumber.version>7.18.1</cucumber.version>
     </properties>
